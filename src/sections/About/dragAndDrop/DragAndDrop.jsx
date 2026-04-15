@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { useRef } from "react";
-import Card from "../../components/Card";
-import { couture } from "../../lib/coutureMotion";
+import Card from "../../../components/Card";
+import { couture } from "../../../lib/coutureMotion";
 
 const DragAndDrop = () => {
   const draggable = useRef();

@@ -36,8 +36,8 @@ export default function Home() {
             Guide the horse with{" "}
             <span className="text-charcoal/90">W</span>,{" "}
             <span className="text-charcoal/90">A</span>,{" "}
-            <span className="text-charcoal/90">S</span>,{" "}
-            <span className="text-charcoal/90">D</span> or the arrow keys.
+            <span className="text-charcoal/90">D</span>, or the arrow keys
+            (forward and turn only).
           </p>
         </div>
       </div>

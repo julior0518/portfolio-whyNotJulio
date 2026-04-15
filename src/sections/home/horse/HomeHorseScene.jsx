@@ -13,7 +13,7 @@ const Horse = ({ position = [-1.5, -1.2, 0], ...props }) => {
   const { nodes, materials, animations } = useGLTF("/models/horse.glb");
   const { actions } = useAnimations(animations, group);
 
-  const keys = useRef({ w: false, a: false, d: false, s: false });
+  const keys = useRef({ w: false, a: false, d: false });
   const introComplete = useRef(false);
   const introTime = useRef(0);
   /** Avoid one frame at origin before RAF — R3F default position is 0,0,0 */
@@ -35,7 +35,6 @@ const Horse = ({ position = [-1.5, -1.2, 0], ...props }) => {
       if (k === "ArrowUp" || k === "w" || k === "W") keys.current.w = true;
       if (k === "ArrowLeft" || k === "a" || k === "A") keys.current.a = true;
       if (k === "ArrowRight" || k === "d" || k === "D") keys.current.d = true;
-      if (k === "ArrowDown" || k === "s" || k === "S") keys.current.s = true;
     };
 
     const handleKeyUp = (e) => {
@@ -44,7 +43,6 @@ const Horse = ({ position = [-1.5, -1.2, 0], ...props }) => {
       if (k === "ArrowUp" || k === "w" || k === "W") keys.current.w = false;
       if (k === "ArrowLeft" || k === "a" || k === "A") keys.current.a = false;
       if (k === "ArrowRight" || k === "d" || k === "D") keys.current.d = false;
-      if (k === "ArrowDown" || k === "s" || k === "S") keys.current.s = false;
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -104,9 +102,8 @@ const Horse = ({ position = [-1.5, -1.2, 0], ...props }) => {
     const a = keys.current.a;
     const w = keys.current.w;
     const d = keys.current.d;
-    const s = keys.current.s;
 
-    const moving = w || s || a || d;
+    const moving = w || a || d;
 
     if (moving) {
       walkAction.paused = false;
@@ -123,12 +120,6 @@ const Horse = ({ position = [-1.5, -1.2, 0], ...props }) => {
       group.current.position.x +=
         Math.sin(group.current.rotation.y) * speed * dt;
       group.current.position.z +=
-        Math.cos(group.current.rotation.y) * speed * dt;
-    }
-    if (s) {
-      group.current.position.x -=
-        Math.sin(group.current.rotation.y) * speed * dt;
-      group.current.position.z -=
         Math.cos(group.current.rotation.y) * speed * dt;
     }
   });

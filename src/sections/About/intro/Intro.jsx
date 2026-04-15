@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { couture } from "../../lib/coutureMotion";
+import { couture } from "../../../lib/coutureMotion";
 
 const Intro = () => {
   const textVariants = {

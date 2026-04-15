@@ -1,4 +1,4 @@
-import { Globe } from "../../components/globe";
+import { Globe } from "../../../components/globe";
 
 const Location = () => {
   return (
