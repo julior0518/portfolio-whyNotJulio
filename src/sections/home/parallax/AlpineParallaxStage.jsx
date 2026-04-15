@@ -29,7 +29,7 @@ export default function AlpineParallaxStage({ contained = false }) {
         style={{
           y: skyY,
           backgroundImage: "url(/assets/mountains/sky.jpg)",
-          backgroundPosition: "bottom",
+          backgroundPosition: "center top",
           backgroundSize: "cover",
         }}
         initial={{ opacity: 0 }}
