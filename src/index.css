@@ -1,0 +1,199 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:ital,opsz,wght@0,14..32,300..600;1,14..32,300..600&display=swap");
+@import "tailwindcss";
+
+@theme {
+  /* Alpine Riviera Jungle Couture — base & structure */
+  --color-canvas: #f8f6f2;
+  --color-porcelain: #f3eee7;
+  --color-white: #ffffff;
+  --color-ink: #111111;
+  --color-charcoal: #2a2a2a;
+  --color-muted: #6b6560;
+
+  /* Luxury accents */
+  --color-gold: #c6a962;
+  --color-brass: #a8843d;
+  --color-burgundy: #4a1f1f;
+  --color-equestrian: #7a5c3e;
+  --color-saddle: #a07a54;
+
+  /* Nature */
+  --color-alpine: #6b7d6d;
+  --color-jungle: #2f4f3e;
+  --color-moss: #5e6b55;
+  --color-plum: #5a3958;
+
+  --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  /* Depth — soft, expensive (usable as shadow-lux-* utilities) */
+  --shadow-lux-sm: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --shadow-lux-md: 0 18px 50px rgba(0, 0, 0, 0.1);
+  --shadow-lux-lg: 0 30px 80px rgba(0, 0, 0, 0.12);
+
+  --animate-orbit: orbit 50s linear infinite;
+
+  @keyframes orbit {
+    0% {
+      transform: rotate(calc(var(--angle) * 1deg))
+        translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
+    }
+    100% {
+      transform: rotate(calc(var(--angle) * 1deg + 360deg))
+        translateY(calc(var(--radius) * 1px))
+        rotate(calc((var(--angle) * -1deg) - 360deg));
+    }
+  }
+
+  --animate-marquee: marquee 50s linear infinite;
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+}
+
+@layer utilities {
+  .bg-grain {
+    background-image:
+      radial-gradient(rgba(17, 17, 17, 0.04) 1px, transparent 1px),
+      radial-gradient(rgba(90, 57, 88, 0.03) 1px, transparent 1px);
+    background-size:
+      4px 4px,
+      7px 7px;
+  }
+
+  .text-balance-pretty {
+    text-wrap: balance;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.2s !important;
+  }
+}
+
+body {
+  min-height: 100dvh;
+  background-color: var(--color-canvas);
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  overflow-x: hidden;
+}
+
+/* Global tactile grain — sits above page bg, below content (z-0 stacking context on children) */
+/* Custom cursor layer — pointer is hidden while sparkles + ring are shown */
+html.custom-cursor-on {
+  cursor: none;
+}
+
+html.custom-cursor-on input,
+html.custom-cursor-on textarea,
+html.custom-cursor-on [role="textbox"] {
+  cursor: text !important;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  mix-blend-mode: multiply;
+  background-image:
+    radial-gradient(rgba(17, 17, 17, 0.05) 1px, transparent 1px),
+    radial-gradient(rgba(74, 31, 31, 0.04) 1px, transparent 1px);
+  background-size:
+    5px 5px,
+    9px 9px;
+}
+
+.app-padding {
+  @apply px-5 sm:px-10 lg:px-14;
+}
+
+.section-spacing {
+  @apply py-24 md:py-32 lg:py-40;
+}
+
+.text-heading {
+  font-family: var(--font-serif);
+  @apply text-3xl font-medium tracking-tight text-ink md:text-4xl;
+}
+
+.grid-black-color {
+  @apply rounded-2xl border border-gold/15 bg-porcelain/90 shadow-lux-sm;
+}
+
+.hover-animation {
+  @apply transition-all duration-500 ease-out;
+}
+
+.hover-animation:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation — hotel / maison calm */
+.nav-link {
+  @apply font-sans text-sm font-medium uppercase tracking-[0.2em] text-charcoal transition-colors duration-500;
+}
+
+.nav-link:hover {
+  @apply text-brass;
+}
+
+.btn {
+  @apply relative w-48 cursor-pointer overflow-hidden rounded-full border border-gold/30 bg-porcelain px-1 py-4 text-center text-sm font-medium text-ink;
+}
+
+/* Editorial surfaces */
+.grid-default {
+  @apply rounded-2xl border border-gold/10 bg-white/95 shadow-lux-sm backdrop-blur-sm transition-all duration-500;
+}
+
+.grid-1 {
+  @apply relative row-span-2 h-[35rem] overflow-hidden md:col-span-3 md:h-full md:hover:shadow-lux-md;
+}
+
+.grid-2 {
+  @apply relative row-span-1 h-[20rem] overflow-hidden md:col-span-3 md:h-full md:hover:shadow-lux-sm;
+}
+
+.grid-3 {
+  @apply relative row-span-1 h-[15rem] duration-500 md:col-span-3 md:h-full;
+}
+
+/* Contact */
+.field-label {
+  @apply font-sans text-xs font-medium uppercase tracking-[0.15em] text-charcoal/80;
+}
+
+.field-input {
+  @apply mt-2 min-h-11 w-full rounded-lg border border-gold/15 bg-white px-3 py-2 text-sm text-ink transition duration-500 placeholder:text-muted;
+}
+
+.field-input-focus {
+  @apply focus-visible:border-gold/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/20;
+}
+
+.border-red {
+  border: 2px solid red;
+}

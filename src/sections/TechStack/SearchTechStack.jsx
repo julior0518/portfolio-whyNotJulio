@@ -1,0 +1,62 @@
+import SearchIcon from "@mui/icons-material/Search";
+import { useState } from "react";
+import { motion } from "motion/react";
+import { couture } from "../../lib/coutureMotion";
+
+const SearchTechStack = ({ query, setQuery, recommendations }) => {
+  const [focused, setFocused] = useState(false);
+
+  const animationVariants = {
+    hidden: { opacity: 0, y: 12 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: couture.reveal,
+    },
+  };
+  return (
+    <motion.div
+      initial="hidden"
+      variants={animationVariants}
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      className="relative w-full md:max-w-xl"
+    >
+      <div className="pointer-events-none absolute left-4 top-1/2 z-20 -translate-y-1/2 text-brass">
+        <SearchIcon className="h-5 w-5" />
+      </div>
+      <input
+        type="text"
+        placeholder="Search the stack…"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        onFocus={() => setFocused(true)}
+        onBlur={() => setTimeout(() => setFocused(false), 150)}
+        className="w-full rounded-full border border-gold/20 bg-white/90 py-3.5 pl-12 pr-5 font-sans text-sm text-ink shadow-lux-sm backdrop-blur-sm transition duration-500 placeholder:text-muted focus:border-gold/40 focus:outline-none focus:ring-2 focus:ring-gold/15"
+      />
+      {focused && recommendations.length > 0 && (
+        <motion.ul
+          initial={{ opacity: 0, y: -6 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -6 }}
+          transition={couture.micro}
+          className="absolute z-20 mt-2 w-full rounded-xl border border-gold/15 bg-white py-1 text-sm text-charcoal shadow-lux-md"
+        >
+          {recommendations.map((e, i) => (
+            <li key={i}>
+              <button
+                type="button"
+                onMouseDown={() => setQuery(e)}
+                className="w-full cursor-pointer px-4 py-2.5 text-left transition hover:bg-porcelain"
+              >
+                {e}
+              </button>
+            </li>
+          ))}
+        </motion.ul>
+      )}
+    </motion.div>
+  );
+};
+
+export default SearchTechStack;
