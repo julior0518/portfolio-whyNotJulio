@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-const NAV_SECTION_IDS = ["home", "about", "tech", "work", "contact"];
+const NAV_SECTION_IDS = ["home", "about", "tools", "work", "contact"];
 
 /**
  * Tracks which main section is most visible in the viewport (scroll-spy for nav).

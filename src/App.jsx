@@ -3,7 +3,7 @@ import CustomCursor from "./components/cursor/CustomCursor";
 import Home from "./sections/home/Home";
 import About from "./sections/about/About";
 import Work from "./sections/Work/Work";
-import TechStack from "./sections/TechStack/TechStack";
+import Tools from "./sections/tools/Tools";
 import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
 
@@ -15,7 +15,7 @@ const App = () => {
       <main>
         <Home />
         <About />
-        <TechStack />
+        <Tools />
         <Work />
         <Contact />
       </main>

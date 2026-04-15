@@ -11,7 +11,7 @@ import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 const NAV_LINKS = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
-  { id: "tech", label: "Craft" },
+  { id: "tools", label: "Tools" },
   { id: "work", label: "Work" },
   { id: "contact", label: "Contact" },
 ];
