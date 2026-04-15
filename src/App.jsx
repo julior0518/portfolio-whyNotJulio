@@ -1,6 +1,6 @@
 import Navbar from "./sections/Navbar";
 import CustomCursor from "./components/cursor/CustomCursor";
-import Hero from "./sections/Hero";
+import Home from "./sections/home/Home";
 import About from "./sections/About/About";
 import Work from "./sections/Work/Work";
 import TechStack from "./sections/TechStack/TechStack";
@@ -13,7 +13,7 @@ const App = () => {
       <CustomCursor />
       <Navbar />
       <main>
-        <Hero />
+        <Home />
         <About />
         <TechStack />
         <Work />

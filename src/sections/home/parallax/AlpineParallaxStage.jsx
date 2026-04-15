@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { cn } from "../../lib/cn";
+import { cn } from "../../../lib/cn";
 import { useAlpineParallax } from "./useAlpineParallax";
 
 const enter = { duration: 1.4, ease: [0.22, 1, 0.36, 1] };

@@ -1,5 +1,5 @@
 import { useScroll, useSpring, useTransform } from "motion/react";
-import { usePrefersReducedMotion } from "../../hooks/usePrefersReducedMotion";
+import { usePrefersReducedMotion } from "../../../hooks/usePrefersReducedMotion";
 
 /**
  * Scroll-driven offsets for alpine depth planes — slow far, slightly faster near.

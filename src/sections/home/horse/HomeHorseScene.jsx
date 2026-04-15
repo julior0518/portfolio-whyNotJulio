@@ -162,37 +162,6 @@ const Horse = ({ position = [-1.5, -1.2, 0], ...props }) => {
 // Preload runs when this module loads (after lazy import) — keeps first paint light.
 useGLTF.preload("/models/horse.glb");
 
-export const Scene = () => {
-  const position = [-0.08, -0.55, 3.11];
-  return (
-    <figure className="absolute inset-0 h-full w-full overflow-hidden">
-      <Canvas camera={{ position: position, fov: 45 }}>
-        <Suspense fallback={<></>}>
-          <ambientLight intensity={0.4} />
-          <directionalLight
-            position={[5, 10, 5]}
-            intensity={1.5}
-            castShadow
-            shadow-mapSize-width={1024}
-            shadow-mapSize-height={1024}
-          />
-          <hemisphereLight
-            skyColor={"#b1e1ff"}
-            groundColor={"#333"}
-            intensity={0.5}
-          />
-          <ResponsiveCamera />
-          <Horse
-            position={[-1.5, -1.2, 0]}
-            scale={0.5}
-            rotation={[0.2, Math.PI / 3, 0]}
-          />
-        </Suspense>
-      </Canvas>
-    </figure>
-  );
-};
-
 const ResponsiveCamera = () => {
   const { camera, size } = useThree();
 
@@ -224,4 +193,33 @@ const ResponsiveCamera = () => {
   return null;
 };
 
-export default Scene;
+export default function HomeHorseScene() {
+  const position = [-0.08, -0.55, 3.11];
+  return (
+    <figure className="absolute inset-0 h-full w-full overflow-hidden">
+      <Canvas camera={{ position: position, fov: 45 }}>
+        <Suspense fallback={<></>}>
+          <ambientLight intensity={0.4} />
+          <directionalLight
+            position={[5, 10, 5]}
+            intensity={1.5}
+            castShadow
+            shadow-mapSize-width={1024}
+            shadow-mapSize-height={1024}
+          />
+          <hemisphereLight
+            skyColor={"#b1e1ff"}
+            groundColor={"#333"}
+            intensity={0.5}
+          />
+          <ResponsiveCamera />
+          <Horse
+            position={[-1.5, -1.2, 0]}
+            scale={0.5}
+            rotation={[0.2, Math.PI / 3, 0]}
+          />
+        </Suspense>
+      </Canvas>
+    </figure>
+  );
+}
