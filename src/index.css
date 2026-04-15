@@ -170,7 +170,8 @@ body::before {
 }
 
 .grid-1 {
-  @apply relative row-span-2 h-[35rem] overflow-hidden md:col-span-3 md:h-full md:hover:shadow-lux-md;
+  @apply relative row-span-2 max-md:row-span-1 overflow-hidden md:col-span-3 md:h-full md:hover:shadow-lux-md;
+  @apply max-md:aspect-square max-md:w-full max-md:min-h-0 max-md:h-auto;
 }
 
 .grid-2 {

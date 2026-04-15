@@ -1,34 +1,49 @@
 import { motion } from "motion/react";
-import { useRef } from "react";
-import Card from "../../../components/Card";
+import { useMemo, useRef } from "react";
+import DraggableImageCard from "../../../components/dragAndDrop/DraggableImageCard";
+import DraggableTextCard from "../../../components/dragAndDrop/DraggableTextCard";
+import { scatterStyleForKey } from "../../../components/dragAndDrop/scatterStyle";
 import { couture } from "../../../lib/coutureMotion";
 
-const DragAndDrop = () => {
+const TEXT_CARDS = [
+  "SOLID",
+  "MVP",
+  "Fast",
+  "UX/UI",
+  "Design",
+  "Detailed",
+  "Clean",
+  "Maintainable",
+  "Scalable",
+];
+
+const IMAGE_CARDS = [
+  { src: "/assets/tech/react.png", alt: "React" },
+  { src: "/assets/tech/graphql.png", alt: "GraphQL" },
+  { src: "/assets/tech/node.png", alt: "Node.js" },
+];
+
+function DragAndDrop() {
   const draggable = useRef();
 
-  const textCards = [
-    "SOLID",
-    "MVP",
-    "Fast",
-    "UX/UI",
-    "Design",
-    "Detailed",
-    "Clean",
-    "Maintainable",
-    "Scalable",
-  ];
+  const textLayouts = useMemo(
+    () =>
+      TEXT_CARDS.map((text) => ({
+        text,
+        style: scatterStyleForKey(text),
+      })),
+    [],
+  );
 
-  const imageCards = [
-    "/assets/tech/react.png",
-    "/assets/tech/graphql.png",
-    "/assets/tech/node.png",
-  ];
-
-  const getRandomStyle = () => ({
-    rotate: `${Math.floor(Math.random() * 90 - 45)}deg`,
-    top: `${Math.floor(Math.random() * 80)}%`,
-    left: `${Math.floor(Math.random() * 80)}%`,
-  });
+  const imageLayouts = useMemo(
+    () =>
+      IMAGE_CARDS.map(({ src, alt }) => ({
+        src,
+        alt,
+        style: scatterStyleForKey(src),
+      })),
+    [],
+  );
 
   const animationVariants = {
     hidden: { opacity: 0, y: -16 },
@@ -41,7 +56,7 @@ const DragAndDrop = () => {
 
   return (
     <motion.div
-      className="grid-default grid-2"
+      className="grid-default grid-1"
       variants={animationVariants}
       initial="hidden"
       whileInView="visible"
@@ -55,26 +70,27 @@ const DragAndDrop = () => {
           Coding is magical
         </p>
 
-        {textCards.map((text, index) => (
-          <Card
-            key={index}
+        {textLayouts.map(({ text, style }) => (
+          <DraggableTextCard
+            key={text}
             text={text}
-            style={getRandomStyle()}
+            style={style}
             containerRef={draggable}
           />
         ))}
 
-        {imageCards.map((image, index) => (
-          <Card
-            key={`img-${index}`}
-            image={image}
-            style={getRandomStyle()}
+        {imageLayouts.map(({ src, alt, style }) => (
+          <DraggableImageCard
+            key={src}
+            src={src}
+            alt={alt}
+            style={style}
             containerRef={draggable}
           />
         ))}
       </div>
     </motion.div>
   );
-};
+}
 
 export default DragAndDrop;
