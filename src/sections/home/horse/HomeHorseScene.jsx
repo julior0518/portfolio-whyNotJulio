@@ -5,7 +5,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Suspense } from "react";
 import * as THREE from "three";
 
-const WALK_IN_SEC = 2.2;
+const WALK_IN_SEC = 1.2;
 const MAX_DELTA = 1 / 30;
 
 const Horse = ({ position = [-1.5, -1.2, 0], ...props }) => {
@@ -19,9 +19,9 @@ const Horse = ({ position = [-1.5, -1.2, 0], ...props }) => {
   /** Avoid one frame at origin before RAF — R3F default position is 0,0,0 */
   const placedRef = useRef(false);
 
-  const px = position[0];
+  const px = position[0] +.1;
   const py = position[1];
-  const pz = position[2];
+  const pz = position[2] - 0.3;
   const zWalkInStart = pz + 0.55;
 
   useEffect(() => {
