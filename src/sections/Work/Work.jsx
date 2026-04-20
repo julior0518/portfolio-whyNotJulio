@@ -1,87 +1,43 @@
-import { lazy, Suspense, useState, useRef } from "react";
-import WorkCard from "./WorkCard";
-import { workArray } from "./work.constants";
-import WorkDetails from "./WordDetails";
-import ObjectStage from "../../components/scene/ObjectStage";
+import { lazy, Suspense } from "react";
+import { WORK_ITEMS } from "./data/work.constants";
+import WorkDetails from "./details/WorkDetails";
+import WorkInfo from "./info/WorkInfo";
+import WorkCardList from "./list/WorkCardList";
+import { useWorkSelection } from "./useWorkSelection";
 
-const WorkSceneLazy = lazy(() => import("./Macbook.jsx"));
+const WorkSceneLazy = lazy(() => import("./scene/WorkScene"));
 
-const Work = () => {
-  const [screen, setScreen] = useState("");
-  const [selectedWork, setSelectedWork] = useState(null);
-  const clickGuardRef = useRef({
-    locked: false,
-    hasLockedOnce: false,
-  });
-
-  const onCardClick = (work) => (event) => {
-    event.stopPropagation();
-
-    const guard = clickGuardRef.current;
-
-    if (guard.locked) return;
-
-    if (!guard.hasLockedOnce) {
-      guard.hasLockedOnce = true;
-      guard.locked = true;
-
-      setTimeout(() => {
-        clickGuardRef.current.locked = false;
-      }, 5000);
-    }
-
-    setScreen(work.image);
-    setSelectedWork(work);
-  };
+export default function Work() {
+  const { selectedWork, screenImage, selectWork } = useWorkSelection(WORK_ITEMS);
 
   return (
-    <div
+    <section
       id="work"
-      className="relative mt-24 overflow-hidden border-t border-gold/15 bg-gradient-to-b from-porcelain via-canvas to-porcelain text-ink scroll-mt-28 app-padding md:mt-32"
+      className="relative overflow-visible border-t border-gold/10 bg-canvas text-ink app-padding section-spacing scroll-mt-28"
     >
-      <div className="relative h-[1000px] overflow-hidden md:h-[100vh]">
-        <div className="pointer-events-none absolute left-0 right-0 top-8 z-0 px-6 md:px-10">
-          <div>
-            <p className="font-sans text-[0.65rem] font-medium uppercase tracking-[0.35em] text-brass">
-              Atelier showcase
-            </p>
-            <h2 className="mt-0 font-serif text-4xl font-medium leading-[1.05] tracking-tight text-ink md:text-5xl lg:text-6xl">
-              Selected works
-            </h2>
-          </div>
-          <p className="mt-4 max-w-lg font-sans text-sm font-light text-muted">
-            The machine below is staged like an object on set — choose a line
-            to dress the screen.
-          </p>
+      <WorkInfo />
+
+      <div className="mx-auto max-w-6xl    lg:px-8">
+        <WorkCardList
+          items={WORK_ITEMS}
+          selectedWork={selectedWork}
+          onSelectWork={selectWork}
+        />
+      </div>
+
+      <div className="relative mt-8 h-[780px] overflow-visible md:mt-10 md:h-[920px]">
+        <div className="absolute left-1/2 top-0 z-[20] flex w-screen -translate-x-1/2 justify-center md:top-[2%]">
+            <Suspense fallback={null}>
+              <WorkSceneLazy image={screenImage} />
+            </Suspense>
         </div>
 
-        <div className="absolute inset-x-0 top-[6%] z-[2] flex justify-center md:top-[8%]">
-          <ObjectStage
-            variant="pedestal"
-            label="La machine"
-            className="relative h-[min(58vh,520px)] w-[min(94vw,56rem)]"
-          >
-            <Suspense fallback={null}>
-              <WorkSceneLazy image={screen} />
-            </Suspense>
-          </ObjectStage>
-        </div>
-        <div className="absolute inset-0 bottom-80 z-[5] app-padding pt-40 md:pt-48">
-          <WorkDetails selectedWork={selectedWork} />
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 z-10 flex flex-col flex-wrap gap-3 px-4 pb-10 md:bottom-24 md:flex-row md:gap-4 md:px-8">
-          {workArray.map((work) => (
-            <WorkCard
-              key={work.id}
-              work={work}
-              selected={selectedWork === work}
-              onClick={onCardClick(work)}
-            />
-          ))}
+        <div className="absolute inset-x-0 top-[48%] z-[5] md:top-[54%]">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <WorkDetails selectedWork={selectedWork} />
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
-};
-
-export default Work;
+}
