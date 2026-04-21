@@ -14,8 +14,8 @@ export const EMAILJS_CONFIG = {
 export function isEmailJsConfigured() {
   return Boolean(
     EMAILJS_CONFIG.serviceId &&
-      EMAILJS_CONFIG.publicKey &&
-      EMAILJS_CONFIG.templateNotify,
+    EMAILJS_CONFIG.publicKey &&
+    EMAILJS_CONFIG.templateNotify,
   );
 }
 
