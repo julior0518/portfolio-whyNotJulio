@@ -4,7 +4,7 @@ import { couture } from "../../../lib/coutureMotion";
 export default function WorkDetails({ selectedWork }) {
   if (!selectedWork) {
     return (
-      <div className="flex min-h-[120px] flex-col justify-end pt-8">
+      <div className="flex min-h-[120px] flex-col justify-end -mt-30 md:mt-0 lg:pt-8">
         <p className="max-w-md font-serif text-2xl font-medium italic leading-snug text-ink/90 md:text-3xl">
           Nothing is selected yet.
         </p>
@@ -16,7 +16,7 @@ export default function WorkDetails({ selectedWork }) {
   }
 
   return (
-    <div className="max-w-[30rem] rounded-2xl border border-gold/10 bg-white/75 p-5 shadow-lux-sm backdrop-blur-sm md:p-6">
+    <div className="max-w-[30rem] rounded-2xl border border-gold/10 bg-white/75 p-5 shadow-lux-sm backdrop-blur-sm md:p-6  -mt-30 md:mt-0">
       <motion.h2
         key={selectedWork.id}
         initial={{ opacity: 0, x: -12 }}
