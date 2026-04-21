@@ -4,20 +4,12 @@ import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 
 const VARIANTS = {
   comet: {
-    dotTrack: ["-18%", "112%"],
-    dotArc: [22, -18, 20],
+    dotTrack: ["0%", "100%"],
+    dotArc: [22, -28, 20],
     dotSpin: [-16, 20],
-    starTrack: ["108%", "-16%"],
+    starTrack: ["100%", "0%"],
     starArc: [-10, 12, -6],
     starGlyph: "✦",
-  },
-  pulse: {
-    dotTrack: ["-10%", "110%"],
-    dotArc: [10, -4, 12],
-    dotSpin: [-8, 10],
-    starTrack: ["104%", "-8%"],
-    starArc: [0, 8, 0],
-    starGlyph: "·",
   },
 };
 
@@ -67,6 +59,8 @@ export default function SectionOrbitDivider({ variant = "comet" }) {
           strokeLinecap="round"
         />
       </svg>
+      <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-canvas to-transparent" />
+      <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-canvas to-transparent" />
       {reduced ? (
         <div className="absolute left-1/2 top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full border border-brass/50 bg-brass/80 shadow-[0_0_10px_rgba(168,132,61,0.35)]" />
       ) : (

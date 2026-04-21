@@ -16,7 +16,7 @@ export default function Tools() {
   return (
     <section
       id="tools"
-      className="relative overflow-visible border-t border-gold/10 bg-canvas text-ink app-padding section-spacing scroll-mt-28"
+      className="relative overflow-visible bg-canvas text-ink app-padding section-spacing scroll-mt-28"
     >
       <ToolsInfo />
       <ToolsSearch

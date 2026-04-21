@@ -22,7 +22,7 @@ export default function Contact() {
     <section
       ref={sectionRef}
       id="contact"
-      className="relative flex scroll-mt-28 flex-col items-center justify-center overflow-hidden border-t border-gold/10 bg-canvas text-ink section-spacing app-padding"
+      className="relative flex scroll-mt-28 flex-col items-center justify-center overflow-hidden bg-canvas text-ink section-spacing app-padding"
     >
       {sectionVisible && (
         <Particles

@@ -13,16 +13,13 @@ const App = () => {
     <div className="relative z-10 mx-auto flex min-h-dvh max-w-7xl flex-col bg-canvas overflow-hidden">
       <CustomCursor />
       <Navbar />
-      <main>
-        <Home />
-        <About />
-        <SectionOrbitDivider variant="comet" />
-        <Tools />
-        <SectionOrbitDivider variant="pulse" />
-        <Work />
-        <SectionOrbitDivider variant="comet" />
-        <Contact />
-      </main>
+      <Home />
+      <About />
+      <SectionOrbitDivider variant="comet" />
+      <Tools />
+      <Work />
+      <SectionOrbitDivider variant="comet" />
+      <Contact />
       <Footer />
     </div>
   );
