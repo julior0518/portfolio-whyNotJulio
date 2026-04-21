@@ -41,6 +41,7 @@ export function Globe({ className }) {
       markers: [
         { location: [40.4168, -3.7038], size: 0.08 }, // Madrid
         { location: [25.7617, -80.1918], size: 0.08 }, // Miami
+        { location: [34.0522, -118.2437], size: 0.08 }, // Los Angeles
       ],
       onRender: (state) => {
         if (!hasDrawn.current && canvasRef.current) {
