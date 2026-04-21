@@ -1,13 +1,25 @@
-/** EmailJS — override with VITE_EMAILJS_* in `.env` for local / deploy. */
+/** Read from `.env.local` — see repo root `.env.example`. Restart dev server after changes. */
+function env(key) {
+  const v = import.meta.env[key];
+  return typeof v === "string" && v.trim() !== "" ? v.trim() : "";
+}
+
 export const EMAILJS_CONFIG = {
-  serviceId:
-    import.meta.env.VITE_EMAILJS_SERVICE_ID ?? "service_79b0nyj",
-  templateId:
-    import.meta.env.VITE_EMAILJS_TEMPLATE_ID ?? "template_17us8im",
-  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY ?? "pn-Bw_mS1_QQdofuV",
+  serviceId: env("VITE_EMAILJS_SERVICE_ID"),
+  publicKey: env("VITE_EMAILJS_PUBLIC_KEY"),
+  templateNotify: env("VITE_EMAILJS_TEMPLATE_NOTIFY"),
+  templateAutoreply: env("VITE_EMAILJS_TEMPLATE_AUTOREPLY") || null,
 };
+
+export function isEmailJsConfigured() {
+  return Boolean(
+    EMAILJS_CONFIG.serviceId &&
+      EMAILJS_CONFIG.publicKey &&
+      EMAILJS_CONFIG.templateNotify,
+  );
+}
 
 export const CONTACT_MAIL_DEFAULTS = {
   toName: "Julio",
-  toEmail: "AliSanatiDev@gmail.com",
+  toEmail: "info@whynotjulio.com",
 };

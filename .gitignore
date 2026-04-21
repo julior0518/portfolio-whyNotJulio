@@ -1,2 +1,7 @@
 /node_modules
 /dist
+
+# Env (secrets — copy .env.example → .env.local and fill)
+.env
+.env.local
+.env.*.local
