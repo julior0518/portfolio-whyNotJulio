@@ -1,9 +1,9 @@
 import { motion } from "motion/react";
-import { couture } from "../../../lib/coutureMotion";
+import { aboutCardViewport, couture } from "../../../lib/coutureMotion";
 
 const Intro = () => {
   const textVariants = {
-    hidden: { opacity: 0, y: 36 },
+    hidden: { opacity: 1, y: 28 },
     visible: {
       opacity: 1,
       y: 0,
@@ -12,7 +12,7 @@ const Intro = () => {
   };
 
   const imageVariants = {
-    hidden: { opacity: 0, scale: 1.04 },
+    hidden: { opacity: 1, scale: 1.03 },
     visible: {
       opacity: 1,
       scale: 1,
@@ -25,12 +25,13 @@ const Intro = () => {
       className="grid-default grid-1 relative flex items-end"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={aboutCardViewport}
     >
       <motion.img
         src="/assets/tech-gadgets.jpg"
         className="h-full w-full object-cover"
         alt=""
+        decoding="async"
         variants={imageVariants}
       />
 

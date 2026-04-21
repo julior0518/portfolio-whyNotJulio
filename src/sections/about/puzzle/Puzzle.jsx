@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { useCallback, useMemo, useRef, useState } from "react";
-import { couture } from "../../../lib/coutureMotion";
+import { aboutCardViewport, couture } from "../../../lib/coutureMotion";
 import {
   PIECE_COUNT,
   SNAP_OVERLAP_RATIO,
@@ -13,7 +13,7 @@ import {
 import PuzzleWinShimmer from "./PuzzleWinShimmer";
 
 const animationVariants = {
-  hidden: { opacity: 0, y: -16 },
+  hidden: { opacity: 1, y: 18 },
   visible: {
     opacity: 1,
     y: 0,
@@ -65,7 +65,7 @@ export default function Puzzle() {
       variants={animationVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={aboutCardViewport}
     >
       <div
         ref={boardRef}

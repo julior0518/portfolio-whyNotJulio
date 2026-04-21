@@ -8,3 +8,10 @@ export const couture = {
   scene: { duration: 1.15, ease: coutureEase },
   ambient: { duration: 2.5, ease: "easeInOut" },
 };
+
+/** About grid tiles — trigger before the row enters view so `whileInView` does not paint one blank frame. */
+export const aboutCardViewport = {
+  once: true,
+  amount: 0.08,
+  margin: "160px 0px 200px 0px",
+};

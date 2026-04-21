@@ -7,6 +7,7 @@ export function Globe({ className }) {
   const canvasRef = useRef(null);
   const pointer = useRef(null);
   const phi = useRef(0);
+  const hasDrawn = useRef(false);
 
   useEffect(() => {
     const resizeCanvas = () => {
@@ -42,6 +43,11 @@ export function Globe({ className }) {
         { location: [25.7617, -80.1918], size: 0.08 }, // Miami
       ],
       onRender: (state) => {
+        if (!hasDrawn.current && canvasRef.current) {
+          hasDrawn.current = true;
+          canvasRef.current.style.opacity = "1";
+        }
+
         if (!pointer.current) {
           phi.current += 0.003; // Change this value to control the speed of auto-rotation
         }
@@ -77,16 +83,11 @@ export function Globe({ className }) {
     canvasRef.current.addEventListener("pointerleave", onPointerUp);
 
     window.addEventListener("resize", resizeCanvas);
-
-    canvasRef.current.style.opacity = "1";
   }, []);
 
   return (
-    <div className={`mx-auto aspect-square w-full max-w-[600px] ${className}`}>
-      <canvas
-        ref={canvasRef}
-        className="w-full h-full opacity-0 transition-opacity duration-500"
-      />
+    <div  className={`mx-auto aspect-square w-full max-w-[600px] bg-porcelain/90 ${className ?? ""}`}>
+      <canvas ref={canvasRef}  className="h-full w-full opacity-0 transition-opacity duration-200" />
     </div>
   );
 }

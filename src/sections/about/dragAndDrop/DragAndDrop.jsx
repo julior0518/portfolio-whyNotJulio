@@ -3,7 +3,7 @@ import { useMemo, useRef } from "react";
 import DraggableImageCard from "../../../components/dragAndDrop/DraggableImageCard";
 import DraggableTextCard from "../../../components/dragAndDrop/DraggableTextCard";
 import { scatterStyleForKey } from "../../../components/dragAndDrop/scatterStyle";
-import { couture } from "../../../lib/coutureMotion";
+import { aboutCardViewport, couture } from "../../../lib/coutureMotion";
 
 const TEXT_CARDS = [
   "SOLID",
@@ -46,7 +46,7 @@ function DragAndDrop() {
   );
 
   const animationVariants = {
-    hidden: { opacity: 0, y: -16 },
+    hidden: { opacity: 1, y: 18 },
     visible: {
       opacity: 1,
       y: 0,
@@ -60,7 +60,7 @@ function DragAndDrop() {
       variants={animationVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={aboutCardViewport}
     >
       <div
         ref={draggable}

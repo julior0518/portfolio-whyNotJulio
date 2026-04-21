@@ -15,12 +15,9 @@
   --color-brass: #a8843d;
   --color-burgundy: #4a1f1f;
   --color-equestrian: #7a5c3e;
-  --color-saddle: #a07a54;
 
   /* Nature */
   --color-alpine: #6b7d6d;
-  --color-jungle: #2f4f3e;
-  --color-moss: #5e6b55;
   --color-plum: #5a3958;
 
   --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
@@ -31,20 +28,6 @@
   --shadow-lux-md: 0 18px 50px rgba(0, 0, 0, 0.1);
   --shadow-lux-lg: 0 30px 80px rgba(0, 0, 0, 0.12);
 
-  --animate-orbit: orbit 50s linear infinite;
-
-  @keyframes orbit {
-    0% {
-      transform: rotate(calc(var(--angle) * 1deg))
-        translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
-    }
-    100% {
-      transform: rotate(calc(var(--angle) * 1deg + 360deg))
-        translateY(calc(var(--radius) * 1px))
-        rotate(calc((var(--angle) * -1deg) - 360deg));
-    }
-  }
-
   --animate-marquee: marquee 50s linear infinite;
   @keyframes marquee {
     from {
@@ -53,21 +36,6 @@
     to {
       transform: translateX(calc(-100% - var(--gap)));
     }
-  }
-}
-
-@layer utilities {
-  .bg-grain {
-    background-image:
-      radial-gradient(rgba(17, 17, 17, 0.04) 1px, transparent 1px),
-      radial-gradient(rgba(90, 57, 88, 0.03) 1px, transparent 1px);
-    background-size:
-      4px 4px,
-      7px 7px;
-  }
-
-  .text-balance-pretty {
-    text-wrap: balance;
   }
 }
 
@@ -96,7 +64,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Global tactile grain — sits above page bg, below content (z-0 stacking context on children) */
 /* Custom cursor layer — pointer is hidden while sparkles + ring are shown */
 html.custom-cursor-on {
   cursor: none;
@@ -132,11 +99,6 @@ body::before {
   @apply py-24 md:py-32 lg:py-40;
 }
 
-.text-heading {
-  font-family: var(--font-serif);
-  @apply text-3xl font-medium tracking-tight text-ink md:text-4xl;
-}
-
 .grid-black-color {
   @apply rounded-2xl border border-gold/15 bg-porcelain/90 shadow-lux-sm;
 }
@@ -151,19 +113,6 @@ body::before {
     0 18px 50px rgba(0, 0, 0, 0.1);
 }
 
-/* Navigation — hotel / maison calm */
-.nav-link {
-  @apply font-sans text-sm font-medium uppercase tracking-[0.2em] text-charcoal transition-colors duration-500;
-}
-
-.nav-link:hover {
-  @apply text-brass;
-}
-
-.btn {
-  @apply relative w-48 cursor-pointer overflow-hidden rounded-full border border-gold/30 bg-porcelain px-1 py-4 text-center text-sm font-medium text-ink;
-}
-
 /* Editorial surfaces */
 .grid-default {
   @apply rounded-2xl border border-gold/10 bg-white/95 shadow-lux-sm backdrop-blur-sm transition-all duration-500;
@@ -172,14 +121,6 @@ body::before {
 .grid-1 {
   @apply relative row-span-2 max-md:row-span-1 overflow-hidden md:col-span-3 md:h-full md:hover:shadow-lux-md;
   @apply max-md:aspect-square max-md:w-full max-md:min-h-0 max-md:h-auto;
-}
-
-.grid-2 {
-  @apply relative row-span-1 h-[20rem] overflow-hidden md:col-span-3 md:h-full md:hover:shadow-lux-sm;
-}
-
-.grid-3 {
-  @apply relative row-span-1 h-[15rem] duration-500 md:col-span-3 md:h-full;
 }
 
 /* Contact */
@@ -193,8 +134,4 @@ body::before {
 
 .field-input-focus {
   @apply focus-visible:border-gold/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/20;
-}
-
-.border-red {
-  border: 2px solid red;
 }

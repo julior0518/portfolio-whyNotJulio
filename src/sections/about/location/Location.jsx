@@ -13,7 +13,7 @@ const Location = () => {
       </div>
 
       <figure
-        className="absolute inset-0 z-0 pointer-events-auto"
+        className="pointer-events-auto absolute inset-0 z-0 bg-porcelain/50"
         aria-label="Globe with Spain and Miami markers"
       >
         <div className="absolute -bottom-[6%] -right-[28%] aspect-square w-[min(28rem,95vw)] sm:-right-[24%] sm:w-[min(32rem,85vw)] md:-right-[20%] md:w-[min(36rem,55vw)]">
