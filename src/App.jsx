@@ -6,6 +6,7 @@ import Work from "./sections/Work/Work";
 import Tools from "./sections/tools/Tools";
 import Contact from "./sections/contact/Contact";
 import Footer from "./sections/Footer";
+import SectionOrbitDivider from "./components/SectionOrbitDivider";
 
 const App = () => {
   return (
@@ -15,8 +16,11 @@ const App = () => {
       <main>
         <Home />
         <About />
+        <SectionOrbitDivider variant="comet" />
         <Tools />
+        <SectionOrbitDivider variant="pulse" />
         <Work />
+        <SectionOrbitDivider variant="comet" />
         <Contact />
       </main>
       <Footer />
