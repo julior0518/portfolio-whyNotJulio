@@ -5,8 +5,8 @@ import { SCENE_CAMERA } from "./workScene.constants";
 
 export default function WorkScene({ image }) {
   return (
-    <figure className="pointer-events-none absolute left-0 top-0 z-[2] -ml-[60px] h-[500px] w-[500px] md:inset-x-0 md:ml-0 md:h-[min(100vh,900px)] md:w-full">
-      <Canvas camera={SCENE_CAMERA} pointerEvents="none">
+    <figure className="pointer-events-none relative z-[2] mx-auto h-[min(500px,55dvh)] w-full md:h-[min(100vh,900px)]">
+      <Canvas className="h-full w-full" camera={SCENE_CAMERA} pointerEvents="none">
         <Suspense fallback={null}>
           <ambientLight intensity={1} />
           <directionalLight position={[2, 2, 2]} intensity={4} castShadow />

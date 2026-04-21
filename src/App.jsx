@@ -9,7 +9,7 @@ import Footer from "./sections/Footer";
 
 const App = () => {
   return (
-    <div className="relative z-10 mx-auto flex min-h-dvh max-w-7xl flex-col bg-canvas">
+    <div className="relative z-10 mx-auto flex min-h-dvh max-w-7xl flex-col bg-canvas overflow-hidden">
       <CustomCursor />
       <Navbar />
       <main>
