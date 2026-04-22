@@ -4,10 +4,7 @@ import { couture } from "../../../lib/coutureMotion";
 export default function WorkDetails({ selectedWork }) {
   if (!selectedWork) {
     return (
-      <div className="flex min-h-[120px] flex-col justify-end -mt-30 md:mt-0 lg:pt-8">
-        <p className="max-w-md font-serif text-2xl font-medium italic leading-snug text-ink/90 md:text-3xl">
-          Nothing is selected yet.
-        </p>
+      <div className="flex   justify-center -mt-30 md:mt-0 lg:pt-8">
         <p className="mt-3 font-sans text-sm font-light text-muted">
           Pick a tab above the stage to load that project into the Macbook.
         </p>
