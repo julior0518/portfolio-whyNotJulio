@@ -64,7 +64,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Custom cursor layer — pointer is hidden while sparkles + ring are shown */
 html.custom-cursor-on {
   cursor: none;
 }
