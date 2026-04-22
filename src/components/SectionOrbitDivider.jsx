@@ -10,6 +10,24 @@ const VARIANTS = {
     starTrack: ["100%", "0%"],
     starArc: [-10, 12, -6],
     starGlyph: "✦",
+    pathA: "M40 40 Q 250 15 500 40 T 960 40",
+    pathB: "M60 44 Q 280 62 500 44 T 940 44",
+    trailClass:
+      "bg-gradient-to-r from-gold/0 via-gold/35 to-gold/0 blur-[1px]",
+    trailShift: "-translate-x-[90%]",
+  },
+  cometLeft: {
+    dotTrack: ["100%", "0%"],
+    dotArc: [20, -28, 22],
+    dotSpin: [16, -20],
+    starTrack: ["0%", "100%"],
+    starArc: [10, -12, 6],
+    starGlyph: "✧",
+    pathA: "M960 40 Q 750 15 500 40 T 40 40",
+    pathB: "M940 44 Q 720 62 500 44 T 60 44",
+    trailClass:
+      "bg-gradient-to-l from-gold/0 via-gold/35 to-gold/0 blur-[1px]",
+    trailShift: "translate-x-[10%]",
   },
 };
 
@@ -44,7 +62,7 @@ export default function SectionOrbitDivider({ variant = "comet" }) {
         preserveAspectRatio="none"
       >
         <path
-          d="M40 40 Q 250 15 500 40 T 960 40"
+          d={selected.pathA}
           fill="none"
           className="stroke-gold/25"
           strokeWidth="1.2"
@@ -52,7 +70,7 @@ export default function SectionOrbitDivider({ variant = "comet" }) {
           strokeDasharray="3 6"
         />
         <path
-          d="M60 44 Q 280 62 500 44 T 940 44"
+          d={selected.pathB}
           fill="none"
           className="stroke-brass/20"
           strokeWidth="1"
@@ -67,7 +85,7 @@ export default function SectionOrbitDivider({ variant = "comet" }) {
         <>
           <motion.div
             style={{ left: dotLeft, y: dotY, opacity: trailOpacity }}
-            className="absolute top-1/2 h-2 w-16 -translate-x-[90%] -translate-y-1/2 rounded-full bg-gradient-to-r from-gold/0 via-gold/35 to-gold/0 blur-[1px]"
+            className={`absolute top-1/2 h-2 w-16 ${selected.trailShift} -translate-y-1/2 rounded-full ${selected.trailClass}`}
           />
           <motion.div
             style={{ left: dotLeft, y: dotY, rotate: dotRotate, scale: dotScale, opacity: dotOpacity }}

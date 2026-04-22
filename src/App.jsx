@@ -18,7 +18,7 @@ const App = () => {
       <SectionOrbitDivider variant="comet" />
       <Tools />
       <Work />
-      <SectionOrbitDivider variant="comet" />
+      <SectionOrbitDivider variant="cometLeft" />
       <Contact />
       <Footer />
     </div>
