@@ -13,11 +13,11 @@ export default function Work() {
   return (
     <section
       id="work"
-      className="relative overflow-visible bg-canvas text-ink app-padding section-spacing scroll-mt-28"
+      className="relative overflow-visible bg-canvas text-ink app-padding section-spacing scroll-mt-28 -mb-100 md:-mb-20"
     >
       <WorkInfo />
 
-      <div className="mx-auto max-w-6xl    lg:px-8">
+      <div className="mx-auto max-w-6xl lg:px-8">
         <WorkCardList
           items={WORK_ITEMS}
           selectedWork={selectedWork}

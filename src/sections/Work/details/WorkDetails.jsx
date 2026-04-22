@@ -39,7 +39,7 @@ export default function WorkDetails({ selectedWork }) {
   return (
     <>
       <div
-        className="relative z-10 -mt-30 max-w-[30rem] rounded-2xl border border-gold/10 bg-white/75 p-5 shadow-lux-sm backdrop-blur-sm md:mt-0 md:p-6"
+        className="relative z-10 max-w-[30rem] rounded-2xl border border-gold/10 bg-white/75 p-5 shadow-lux-sm backdrop-blur-sm -mt-30 md:-mt-20 md:p-6"
         onMouseEnter={() => setPreviewOpen(true)}
         onMouseLeave={() => setPreviewOpen(false)}
         onClick={handleCardClick}
