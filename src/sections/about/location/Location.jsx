@@ -5,13 +5,16 @@ const Location = () => {
     <div className="grid-black-color grid-1 relative overflow-hidden">
       <div className="pointer-events-none relative z-10 flex min-h-0 flex-1 flex-col items-start justify-start px-6 py-10 text-left md:px-10 md:py-12">
         <h4 className="max-w-md font-serif text-2xl font-medium leading-snug text-ink sm:text-3xl md:text-4xl">
-          I was born in <span className="font-bold">Spain</span>,
+          I am from <span className="font-bold">Spain</span>,
         </h4>
         <h4 className="mt-3 max-w-md font-serif text-2xl font-medium leading-snug text-ink sm:text-3xl md:text-4xl">
-          live in <span className="font-bold">Miami</span>
+          work in <span className="font-bold">New York</span>
         </h4>
         <h4 className="mt-3 max-w-md font-serif text-2xl font-medium leading-snug text-ink sm:text-3xl md:text-4xl">
-          moving to <span className="font-bold">Los Angeles</span>
+          currently in <span className="font-bold">Miami</span>
+        </h4>
+        <h4 className="mt-3 max-w-md font-serif text-2xl font-medium leading-snug text-ink sm:text-3xl md:text-4xl">
+          soon to <span className="font-bold">Los Angeles</span>
         </h4>
       </div>
 

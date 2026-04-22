@@ -51,6 +51,7 @@ export function Globe({ className }) {
           { location: [40.4168, -3.7038], size: 0.08 }, // Madrid
           { location: [25.7617, -80.1918], size: 0.08 }, // Miami
           { location: [34.0522, -118.2437], size: 0.08 }, // Los Angeles
+          { location: [40.7128, -74.0060], size: 0.08 }, // New York
         ],
         onRender: (state) => {
           if (!hasDrawn.current) {

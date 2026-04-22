@@ -26,14 +26,14 @@ export default function Work() {
       </div>
 
       <div className="relative mt-8 h-[780px] w-[calc(100%)] min-w-0  overflow-x-clip md:mt-10 md:h-[920px]">
-        <div className="absolute inset-x-0 top-0 z-[20] md:top-[2%]">
+        <div className="absolute inset-x-0 top-0 z-[20] md:top-[2%] pointer-events-none">
           <Suspense fallback={null}>
             <WorkSceneLazy image={screenImage} />
           </Suspense>
         </div>
 
-        <div className="absolute inset-x-0 top-[48%] z-[5] md:top-[54%]">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="pointer-events-auto absolute inset-x-0 top-[48%] z-[30] md:top-[54%]">
+          <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <WorkDetails selectedWork={selectedWork} />
           </div>
         </div>
