@@ -4,66 +4,93 @@ import createGlobe from "cobe";
 import { useEffect, useRef } from "react";
 
 export function Globe({ className }) {
+  const containerRef = useRef(null);
   const canvasRef = useRef(null);
   const pointer = useRef(null);
   const phi = useRef(0);
   const hasDrawn = useRef(false);
 
   useEffect(() => {
-    const resizeCanvas = () => {
-      if (!canvasRef.current) return { width: 0, height: 0 };
+    const canvas = canvasRef.current;
+    const container = containerRef.current;
+    if (!canvas || !container) return undefined;
 
-      const rect = canvasRef.current.getBoundingClientRect();
-      const width = rect.width * 2; // multiply by devicePixelRatio
-      const height = rect.height * 2;
+    const buffer = { width: 0, height: 0 };
 
-      canvasRef.current.width = width;
-      canvasRef.current.height = height;
-
-      return { width, height };
+    const applySize = () => {
+      const rect = canvas.getBoundingClientRect();
+      const w = Math.max(2, Math.round(rect.width * 2));
+      const h = Math.max(2, Math.round(rect.height * 2));
+      if (w === buffer.width && h === buffer.height) return;
+      buffer.width = w;
+      buffer.height = h;
+      canvas.width = w;
+      canvas.height = h;
     };
 
-    let { width, height } = resizeCanvas();
+    let globe = null;
 
-    createGlobe(canvasRef.current, {
-      width,
-      height,
-      devicePixelRatio: 2,
-      phi: phi.current,
-      theta: 0.3,
-      dark: 0,
-      diffuse: 1,
-      baseColor: [1, 1, 1],
-      mapBrightness: 1.2,
-      mapSamples: 16000,
-      glowColor: [1, 1, 1],
-      markerColor: [1, 0, 0],
-      markers: [
-        { location: [40.4168, -3.7038], size: 0.08 }, // Madrid
-        { location: [25.7617, -80.1918], size: 0.08 }, // Miami
-        { location: [34.0522, -118.2437], size: 0.08 }, // Los Angeles
-      ],
-      onRender: (state) => {
-        if (!hasDrawn.current && canvasRef.current) {
-          hasDrawn.current = true;
-          canvasRef.current.style.opacity = "1";
-        }
+    const mountGlobe = () => {
+      if (globe) return;
+      applySize();
+      if (buffer.width < 4 || buffer.height < 4) return;
+      globe = createGlobe(canvas, {
+        width: buffer.width,
+        height: buffer.height,
+        devicePixelRatio: 2,
+        phi: phi.current,
+        theta: 0.3,
+        dark: 0,
+        diffuse: 1,
+        baseColor: [1, 1, 1],
+        mapBrightness: 1.2,
+        mapSamples: 16000,
+        glowColor: [1, 1, 1],
+        markerColor: [1, 0, 0],
+        markers: [
+          { location: [40.4168, -3.7038], size: 0.08 }, // Madrid
+          { location: [25.7617, -80.1918], size: 0.08 }, // Miami
+          { location: [34.0522, -118.2437], size: 0.08 }, // Los Angeles
+        ],
+        onRender: (state) => {
+          if (!hasDrawn.current) {
+            hasDrawn.current = true;
+            canvas.style.opacity = "1";
+          }
 
-        if (!pointer.current) {
-          phi.current += 0.003; // Change this value to control the speed of auto-rotation
-        }
+          if (!pointer.current) {
+            phi.current += 0.003;
+          }
 
-        state.phi = phi.current;
+          state.phi = phi.current;
+          state.width = buffer.width;
+          state.height = buffer.height;
+        },
+      });
+    };
 
-        const { width, height } = resizeCanvas();
-        state.width = width;
-        state.height = height;
-      },
+    const ro = new ResizeObserver(() => {
+      applySize();
+      mountGlobe();
+    });
+    ro.observe(container);
+
+    const onWindowResize = () => {
+      applySize();
+      mountGlobe();
+    };
+    window.addEventListener("resize", onWindowResize);
+
+    applySize();
+    mountGlobe();
+    const rafId = requestAnimationFrame(() => {
+      applySize();
+      mountGlobe();
     });
 
     const onPointerDown = (e) => {
       pointer.current = { prevX: e.clientX };
-      canvasRef.current.setPointerCapture(e.pointerId);
+      canvas.setPointerCapture(e.pointerId);
     };
 
     const onPointerMove = (e) => {
@@ -75,20 +102,35 @@ export function Globe({ className }) {
 
     const onPointerUp = (e) => {
       pointer.current = null;
-      canvasRef.current.releasePointerCapture(e.pointerId);
+      canvas.releasePointerCapture(e.pointerId);
     };
 
-    canvasRef.current.addEventListener("pointerdown", onPointerDown);
-    canvasRef.current.addEventListener("pointermove", onPointerMove);
-    canvasRef.current.addEventListener("pointerup", onPointerUp);
-    canvasRef.current.addEventListener("pointerleave", onPointerUp);
+    canvas.addEventListener("pointerdown", onPointerDown);
+    canvas.addEventListener("pointermove", onPointerMove);
+    canvas.addEventListener("pointerup", onPointerUp);
+    canvas.addEventListener("pointerleave", onPointerUp);
 
-    window.addEventListener("resize", resizeCanvas);
+    return () => {
+      cancelAnimationFrame(rafId);
+      ro.disconnect();
+      window.removeEventListener("resize", onWindowResize);
+      canvas.removeEventListener("pointerdown", onPointerDown);
+      canvas.removeEventListener("pointermove", onPointerMove);
+      canvas.removeEventListener("pointerup", onPointerUp);
+      canvas.removeEventListener("pointerleave", onPointerUp);
+      globe?.destroy();
+    };
   }, []);
 
   return (
-    <div  className={`mx-auto aspect-square w-full max-w-[600px] bg-porcelain/90 ${className ?? ""}`}>
-      <canvas ref={canvasRef}  className="h-full w-full opacity-0 transition-opacity duration-200" />
+    <div
+      ref={containerRef}
+      className={`mx-auto aspect-square w-full max-w-[600px] bg-porcelain/90 ${className ?? ""}`}
+    >
+      <canvas
+        ref={canvasRef}
+        className="h-full w-full opacity-0 transition-opacity duration-200"
+      />
     </div>
   );
 }

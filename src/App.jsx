@@ -10,7 +10,7 @@ import SectionOrbitDivider from "./components/SectionOrbitDivider";
 
 const App = () => {
   return (
-    <div className="relative z-10 mx-auto flex min-h-dvh max-w-7xl flex-col bg-canvas overflow-hidden">
+    <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col bg-canvas overflow-hidden">
       <CustomCursor />
       <Navbar />
       <Home />

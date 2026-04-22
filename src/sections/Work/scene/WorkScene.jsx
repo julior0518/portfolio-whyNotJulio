@@ -5,7 +5,7 @@ import { SCENE_CAMERA } from "./workScene.constants";
 
 export default function WorkScene({ image }) {
   return (
-    <figure className="pointer-events-none relative z-[2] mx-auto h-[min(500px,55dvh)] w-full md:h-[min(100vh,900px)]">
+    <figure className="pointer-events-none relative z-[2] mx-auto h-[min(500px,55svh)] w-full md:h-[min(100svh,900px)]">
       <Canvas className="h-full w-full" camera={SCENE_CAMERA} pointerEvents="none">
         <Suspense fallback={null}>
           <ambientLight intensity={1} />

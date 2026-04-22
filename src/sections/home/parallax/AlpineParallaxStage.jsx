@@ -17,7 +17,7 @@ export default function AlpineParallaxStage({ contained = false }) {
         "overflow-hidden",
         contained
           ? "absolute inset-0 isolate min-h-0 w-full"
-          : "relative h-screen min-h-[100dvh]",
+          : "relative h-screen min-h-[100svh]",
       )}
     >
       {/* Sky — scroll only (no vertical entrance) */}
