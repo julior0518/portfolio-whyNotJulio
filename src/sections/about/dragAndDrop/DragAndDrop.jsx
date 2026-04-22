@@ -1,9 +1,7 @@
-import { motion } from "motion/react";
 import { useMemo, useRef } from "react";
 import DraggableImageCard from "../../../components/dragAndDrop/DraggableImageCard";
 import DraggableTextCard from "../../../components/dragAndDrop/DraggableTextCard";
 import { scatterStyleForKey } from "../../../components/dragAndDrop/scatterStyle";
-import { aboutCardViewport, couture } from "../../../lib/coutureMotion";
 
 const TEXT_CARDS = [
   "SOLID",
@@ -45,23 +43,8 @@ function DragAndDrop() {
     [],
   );
 
-  const animationVariants = {
-    hidden: { opacity: 1, y: 18 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: couture.reveal,
-    },
-  };
-
   return (
-    <motion.div
-      className="grid-default grid-1"
-      variants={animationVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={aboutCardViewport}
-    >
+    <div className="grid-default grid-1">
       <div
         ref={draggable}
         className="relative flex h-full w-full items-center justify-center"
@@ -89,7 +72,7 @@ function DragAndDrop() {
           />
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 }
 

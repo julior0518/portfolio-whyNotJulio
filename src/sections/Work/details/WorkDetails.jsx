@@ -5,8 +5,8 @@ export default function WorkDetails({ selectedWork }) {
   if (!selectedWork) {
     return (
       <div className="flex   justify-center -mt-30 md:mt-0 lg:pt-8">
-        <p className="mt-3 font-sans text-sm font-light text-muted">
-          Pick a tab above the stage to load that project into the Macbook.
+        <p className="mt-3 font-sans text-xs  text-center font-light text-muted w-[75%] mx-auto">
+          Pick a tab above the load a project into the Macbook.
         </p>
       </div>
     );

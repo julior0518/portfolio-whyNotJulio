@@ -25,7 +25,7 @@ export default function Work() {
         />
       </div>
 
-      <div className="relative mt-8 h-[780px] w-[calc(100%+2.5rem)] min-w-0 -mx-5 overflow-x-clip md:mt-10 md:h-[920px] sm:w-[calc(100%+5rem)] sm:-mx-10 lg:w-[calc(100%+7rem)] lg:-mx-14">
+      <div className="relative mt-8 h-[780px] w-[calc(100%)] min-w-0  overflow-x-clip md:mt-10 md:h-[920px]  sm:-mx-10 lg:-mx-14">
         <div className="absolute inset-x-0 top-0 z-[20] md:top-[2%]">
           <Suspense fallback={null}>
             <WorkSceneLazy image={screenImage} />

@@ -8,7 +8,7 @@ import {
 } from "./toolsGrid.constants";
 
 const iconClassName =
-  "h-16 w-16 select-none rounded-lg object-contain will-change-transform md:h-20 md:w-20";
+  "h-10 w-10 md:h-16 md:w-16 select-none rounded-lg object-contain will-change-transform md:h-20 md:w-20";
 
 /**
  * One tool icon: repulsion wrapper + search highlight on the image.

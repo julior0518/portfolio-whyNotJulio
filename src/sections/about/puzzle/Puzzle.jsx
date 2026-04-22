@@ -1,6 +1,5 @@
 import { motion } from "motion/react";
 import { useCallback, useMemo, useRef, useState } from "react";
-import { aboutCardViewport, couture } from "../../../lib/coutureMotion";
 import {
   PIECE_COUNT,
   SNAP_OVERLAP_RATIO,
@@ -11,15 +10,6 @@ import {
   tileBackgroundStyle,
 } from "./puzzleUtils";
 import PuzzleWinShimmer from "./PuzzleWinShimmer";
-
-const animationVariants = {
-  hidden: { opacity: 1, y: 18 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: couture.reveal,
-  },
-};
 
 export default function Puzzle() {
   const boardRef = useRef(null);
@@ -60,13 +50,7 @@ export default function Puzzle() {
   const complete = locked.size === PIECE_COUNT;
 
   return (
-    <motion.div
-      className="grid-default grid-1 relative flex h-full min-h-0 flex-col overflow-visible"
-      variants={animationVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={aboutCardViewport}
-    >
+    <div className="grid-default grid-1 relative flex h-full min-h-0 flex-col overflow-visible">
       <div
         ref={boardRef}
         className="relative min-h-0 flex-1 touch-manipulation p-3 md:p-4"
@@ -124,6 +108,6 @@ export default function Puzzle() {
 
         <PuzzleWinShimmer active={complete} />
       </div>
-    </motion.div>
+    </div>
   );
 }
