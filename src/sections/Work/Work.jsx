@@ -13,7 +13,7 @@ export default function Work() {
   return (
     <section
       id="work"
-      className="relative overflow-visible bg-canvas text-ink app-padding section-spacing scroll-mt-28 -mb-100 md:-mb-20"
+      className="relative overflow-visible bg-canvas text-ink app-padding section-spacing scroll-mt-28 -mb-70 md:-mb-60"
     >
       <WorkInfo />
 

@@ -3,12 +3,6 @@ import { useCallback, useEffect, useState } from "react";
 import { couture } from "../../../lib/coutureMotion";
 import { DEFAULT_SCREEN_IMAGE } from "../scene/workScene.constants";
 
-const previewEase = [0.22, 1, 0.36, 1];
-
-function isCoarsePointer() {
-  return typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
-}
-
 export default function WorkDetails({ selectedWork }) {
   const [previewOpen, setPreviewOpen] = useState(false);
 
@@ -21,9 +15,21 @@ export default function WorkDetails({ selectedWork }) {
     setPreviewOpen(false);
   }, [selectedWork?.id]);
 
+  useEffect(() => {
+    if (!previewOpen) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") setPreviewOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [previewOpen]);
+
   const handleCardClick = useCallback(() => {
-    if (!isCoarsePointer()) return;
     setPreviewOpen((p) => !p);
+  }, []);
+
+  const stopPreviewInnerClick = useCallback((e) => {
+    e.stopPropagation();
   }, []);
 
   if (!selectedWork) {
@@ -39,9 +45,7 @@ export default function WorkDetails({ selectedWork }) {
   return (
     <>
       <div
-        className="relative z-10 max-w-[30rem] rounded-2xl border border-gold/10 bg-white/75 p-5 shadow-lux-sm backdrop-blur-sm -mt-30 md:-mt-20 md:p-6"
-        onMouseEnter={() => setPreviewOpen(true)}
-        onMouseLeave={() => setPreviewOpen(false)}
+        className="relative z-10 max-w-[30rem] cursor-pointer rounded-2xl border border-gold/10 bg-white/75 p-5 shadow-lux-sm backdrop-blur-sm -mt-30 md:-mt-20 md:p-6"
         onClick={handleCardClick}
       >
         <motion.h2
@@ -77,28 +81,30 @@ export default function WorkDetails({ selectedWork }) {
         {previewOpen && (
           <motion.div
             key="work-screen-preview"
+            data-work-preview-root
             role="presentation"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[100] flex cursor-default items-center justify-center bg-canvas/85 p-6 max-md:pointer-events-auto md:pointer-events-none md:p-10"
+            className="fixed inset-0 z-[100] flex cursor-default items-center justify-center bg-canvas/85 p-6 pointer-events-auto md:p-10"
             aria-hidden
-            onClick={(e) => {
-              if (e.target !== e.currentTarget) return;
-              if (isCoarsePointer()) setPreviewOpen(false);
-            }}
+            onClick={() => setPreviewOpen(false)}
           >
-            <motion.img
-              src={previewSrc}
-              alt={`${selectedWork.title} screen preview`}
-              initial={{ opacity: 0, scale: 0.94 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.94 }}
-              transition={{ duration: 0.28, ease: previewEase }}
-              className="pointer-events-auto max-h-[min(85vh,52rem)] w-auto max-w-[min(92vw,56rem)] rounded-xl border border-gold/20 object-contain shadow-lux-lg md:pointer-events-none"
-              onClick={(e) => e.stopPropagation()}
-            />
+            <div
+              className="w-auto overflow-hidden rounded-xl border border-gold/20 shadow-lux-lg"
+              style={{
+                maxHeight: "min(85vh, 52rem)",
+                maxWidth: "min(92vw, 56rem)",
+              }}
+              onClick={stopPreviewInnerClick}
+            >
+              <img
+                src={previewSrc}
+                alt={`${selectedWork.title} screen preview`}
+                className="block h-full w-full max-h-full object-contain"
+              />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
