@@ -4,7 +4,7 @@ import { TOOLS_GRID_EASE } from "./toolsGrid.constants";
 import { useToolsRepulsion } from "./useToolsRepulsion";
 
 const gridClassName =
-  "grid min-h-[min(48vh,30rem)] w-full cursor-crosshair touch-none grid-cols-4 content-start justify-items-center gap-6 py-12  md:grid-cols-6 md:gap-8 lg:grid-cols-8";
+  "pointer-events-none grid min-h-[min(48vh,30rem)] w-full touch-none grid-cols-4 content-start justify-items-center gap-6 py-12 md:pointer-events-auto md:cursor-crosshair md:grid-cols-6 md:gap-8 lg:grid-cols-8";
 
 /**
  * Full tool stack: pointer repulsion + optional search dimming (matchedSet).

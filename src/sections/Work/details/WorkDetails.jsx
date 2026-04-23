@@ -60,7 +60,7 @@ export default function WorkDetails({ selectedWork }) {
         <p className="mt-4 max-w-[26rem] font-sans text-sm font-light leading-relaxed text-charcoal md:text-base">
           {selectedWork.description}
         </p>
-        {selectedWork.tools?.length > 0 && (
+        {Boolean(selectedWork.tools?.length) && (
           <div
             className="mt-5 flex flex-wrap gap-3"
             onClick={(e) => e.stopPropagation()}
