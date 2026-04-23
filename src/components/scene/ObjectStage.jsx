@@ -15,11 +15,11 @@ export default function ObjectStage({
       className={cn(
         "relative",
         variant === "arch" &&
-          "mx-auto w-full max-w-[min(100%,56rem)] overflow-hidden rounded-t-[min(28vw,9.5rem)] border border-gold/20 border-b-0 bg-transparent shadow-[inset_0_1px_0_0_rgba(198,169,98,0.12)]",
+          "mx-auto w-full max-w-[min(100%,64rem)] overflow-hidden rounded-t-[min(28vw,9.5rem)] border border-gold/20 border-b-0 bg-transparent shadow-[inset_0_1px_0_0_rgba(198,169,98,0.12)]",
         variant === "frame" &&
           "rounded-md border border-gold/15 shadow-lux-md ring-1 ring-gold/5",
         variant === "pedestal" &&
-          "mx-auto max-w-5xl rounded-sm border border-gold/10 bg-gradient-to-b from-porcelain/40 to-canvas/80 pt-2 shadow-lux-lg",
+          "mx-auto max-w-6xl rounded-sm border border-gold/10 bg-gradient-to-b from-porcelain/40 to-canvas/80 pt-2 shadow-lux-lg",
         className,
       )}
       data-object-stage={variant}

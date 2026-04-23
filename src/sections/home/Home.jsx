@@ -21,7 +21,7 @@ export default function Home() {
       </div>
 
       <div className="relative z-20 flex min-h-[100svh] w-full flex-col">
-        <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center pb-6 pt-14 md:pb-10 md:pt-16">
+        <div className="mx-auto flex w-full max-w-screen-2xl flex-1 flex-col justify-center pb-6 pt-14 md:pb-10 md:pt-16">
           <HomeArchStage>
             <div className="relative isolate h-full min-h-[12rem] w-full">
               <AlpineParallaxStage contained />
@@ -32,7 +32,7 @@ export default function Home() {
               </div>
             </div>
           </HomeArchStage>
-          <p className="mx-auto mt-3 max-w-lg text-center font-sans text-[0.65rem] font-light leading-relaxed tracking-[0.12em] text-muted md:mt-4 md:text-[0.7rem] md:tracking-[0.14em]">
+          <p className="mx-auto mt-3 max-w-2xl text-center font-sans text-[0.65rem] font-light leading-relaxed tracking-[0.12em] text-muted md:mt-4 md:text-[0.7rem] md:tracking-[0.14em]">
             Guide the horse with{" "}
             <span className="text-charcoal/90">W</span>,{" "}
             <span className="text-charcoal/90">A</span>,{" "}

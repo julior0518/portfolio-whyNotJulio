@@ -54,7 +54,7 @@ export default function SectionOrbitDivider({ variant = "comet" }) {
     <div
       ref={containerRef}
       aria-hidden
-      className="pointer-events-none relative mx-auto my-2 h-20 w-full max-w-6xl overflow-hidden"
+      className="pointer-events-none relative mx-auto my-2 h-20 w-full max-w-screen-2xl overflow-hidden"
     >
       <svg
         className="absolute inset-0 h-full w-full"

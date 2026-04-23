@@ -36,7 +36,7 @@ export default function WorkDetails({ selectedWork }) {
     return (
       <div className="flex justify-center -mt-30 md:mt-0 lg:pt-8">
         <p className="mx-auto mt-3 w-[75%] text-center font-sans text-xs font-light text-muted">
-          Pick a tab above the load a project into the Macbook.
+          Pick a tab above to load a project into the Macbook.
         </p>
       </div>
     );
@@ -45,7 +45,7 @@ export default function WorkDetails({ selectedWork }) {
   return (
     <>
       <div
-        className="relative z-10 max-w-[30rem] cursor-pointer rounded-2xl border border-gold/10 bg-white/75 p-5 shadow-lux-sm backdrop-blur-sm -mt-30 md:-mt-20 md:p-6"
+        className="relative z-10 max-w-[36rem] cursor-pointer rounded-2xl border border-gold/10 bg-white/75 p-5 shadow-lux-sm backdrop-blur-sm -mt-30 md:-mt-20 md:p-6"
         onClick={handleCardClick}
       >
         <motion.h2
@@ -57,7 +57,7 @@ export default function WorkDetails({ selectedWork }) {
         >
           {selectedWork.title}
         </motion.h2>
-        <p className="mt-4 max-w-[26rem] font-sans text-sm font-light leading-relaxed text-charcoal md:text-base">
+        <p className="mt-4 max-w-[32rem] font-sans text-sm font-light leading-relaxed text-charcoal md:text-base">
           {selectedWork.description}
         </p>
         {Boolean(selectedWork.tools?.length) && (

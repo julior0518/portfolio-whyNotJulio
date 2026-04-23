@@ -34,9 +34,9 @@ export default function Contact() {
       )}
       {showAlert && <Alert type={alertType} text={alertMessage} />}
 
-      <div className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center">
+      <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center">
         <ContactInfo />
-        <div className="mt-2 w-full max-w-md rounded-2xl border border-gold/15 bg-white/95 p-8 shadow-lux-lg backdrop-blur-sm md:mt-4">
+        <div className="mt-2 w-full max-w-xl rounded-2xl border border-gold/15 bg-white/95 p-8 shadow-lux-lg backdrop-blur-sm md:mt-4">
           <ContactForm
             formData={formData}
             isLoading={isLoading}

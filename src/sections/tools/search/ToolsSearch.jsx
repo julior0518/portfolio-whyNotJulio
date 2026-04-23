@@ -21,7 +21,7 @@ export default function ToolsSearch({ query, setQuery, recommendations }) {
       variants={animationVariants}
       whileInView="visible"
       viewport={{ once: true, amount: 0.15 }}
-      className="relative z-10 mx-auto w-full md:max-w-xl"
+      className="relative z-10 mx-auto w-full md:max-w-2xl"
     >
       <div className="pointer-events-none absolute left-4 top-1/2 z-20 -translate-y-1/2 text-brass">
         <SearchIcon className="h-5 w-5" />

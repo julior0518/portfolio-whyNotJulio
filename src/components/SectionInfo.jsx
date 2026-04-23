@@ -1,6 +1,6 @@
 export default function SectionInfo({ eyebrow, title, description }) {
   return (
-    <div className="mx-auto mb-16 max-w-3xl">
+    <div className="mx-auto mb-16 max-w-5xl">
       <div>
         <p className="font-sans text-[0.65rem] font-medium uppercase tracking-[0.35em] text-brass">
           {eyebrow}
@@ -9,7 +9,7 @@ export default function SectionInfo({ eyebrow, title, description }) {
           {title}
         </h2>
       </div>
-      <p className="mt-6 max-w-2xl font-sans text-base font-light leading-relaxed text-muted md:text-lg">
+      <p className="mt-6 max-w-3xl font-sans text-base font-light leading-relaxed text-muted md:text-lg">
         {description}
       </p>
     </div>

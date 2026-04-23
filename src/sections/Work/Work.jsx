@@ -21,7 +21,7 @@ export default function Work() {
     >
       <WorkInfo />
 
-      <div className="mx-auto max-w-6xl lg:px-8">
+      <div className="mx-auto max-w-screen-2xl lg:px-8">
         <WorkCardList
           items={WORK_ITEMS}
           selectedWork={selectedWork}
@@ -37,7 +37,7 @@ export default function Work() {
         </div>
 
         <div className="pointer-events-auto absolute inset-x-0 top-[48%] z-[30] md:top-[54%]">
-          <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="relative mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
             <WorkDetails selectedWork={selectedWork} />
           </div>
         </div>

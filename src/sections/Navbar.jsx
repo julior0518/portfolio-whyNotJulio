@@ -49,7 +49,7 @@ const Navbar = () => {
 
   return (
     <header className="fixed left-0 top-0 z-[200] w-full border-b border-gold/15 bg-canvas/90 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3.5 sm:px-10 lg:px-14">
+      <div className="mx-auto flex max-w-screen-2xl items-center justify-between gap-4 px-5 py-3.5 sm:px-10 lg:px-14">
         <a
           href="#home"
           className="group flex min-w-0 shrink-0 items-center gap-3"

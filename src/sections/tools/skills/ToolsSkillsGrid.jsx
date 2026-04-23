@@ -25,7 +25,7 @@ export default function ToolsSkillsGrid({
   } = useToolsRepulsion(count);
 
   return (
-    <div className="mx-auto mt-6 w-full max-w-3xl px-2 sm:px-4">
+    <div className="mx-auto mt-6 w-full max-w-5xl px-2 sm:px-4">
       <div
         ref={containerRef}
         role="presentation"
