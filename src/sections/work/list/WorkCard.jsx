@@ -6,7 +6,7 @@ export default function WorkCard({ item, selected, onSelect }) {
       type="button"
       onClick={onSelect}
       className={cn(
-        "group flex h-14 min-w-[100px] shrink-0 snap-start items-center gap-3 overflow-hidden rounded-full border px-4 py-2 text-left transition-all duration-300 md:min-w-0 md:flex-1 md:basis-0",
+        "group flex h-14 min-w-[100px] shrink-0 cursor-pointer snap-start items-center gap-3 overflow-hidden rounded-full border px-4 py-2 text-left transition-all duration-300 md:min-w-0 md:flex-1 md:basis-0",
         selected
           ? "border-gold/50 bg-white text-ink shadow-lux-md"
           : "border-gold/20 bg-white/55 text-charcoal hover:border-gold/35 hover:bg-white/85",

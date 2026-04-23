@@ -45,7 +45,7 @@ export default function WorkDetails({ selectedWork }) {
   return (
     <>
       <div
-        className="relative z-10 max-w-[36rem] cursor-pointer rounded-2xl border border-gold/10 bg-white/75 p-5 shadow-lux-sm backdrop-blur-sm -mt-30 md:-mt-20 md:p-6"
+        className="relative z-10 max-w-[36rem] cursor-pointer rounded-2xl border border-gold/20 bg-white/75 p-5 shadow-lux-sm backdrop-blur-sm transition-all duration-300 hover:border-gold/35 hover:bg-white/85 -mt-30 md:-mt-20 md:p-6"
         onClick={handleCardClick}
       >
         <motion.h2
