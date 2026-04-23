@@ -15,13 +15,12 @@ export default function Work() {
     <section
       id="work"
       className={cn(
-        "relative overflow-visible bg-canvas text-ink app-padding section-spacing scroll-mt-28 md:-mb-60",
-        selectedWork ? "-mb-70 " : "-mb-110",
+        "relative overflow-visible border-t-2 border-gold/20 bg-porcelain/35 text-ink section-spacing scroll-mt-28 md:-mb-60",
+        selectedWork ? "-mb-70" : "-mb-110",
       )}
     >
-      <WorkInfo />
-
-      <div className="mx-auto max-w-screen-2xl lg:px-8">
+      <div className="mx-auto w-full max-w-screen-2xl app-padding">
+        <WorkInfo />
         <WorkCardList
           items={WORK_ITEMS}
           selectedWork={selectedWork}
@@ -37,7 +36,7 @@ export default function Work() {
         </div>
 
         <div className="pointer-events-auto absolute inset-x-0 top-[48%] z-[30] md:top-[54%]">
-          <div className="relative mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+          <div className="relative mx-auto w-full max-w-screen-2xl app-padding">
             <WorkDetails selectedWork={selectedWork} />
           </div>
         </div>

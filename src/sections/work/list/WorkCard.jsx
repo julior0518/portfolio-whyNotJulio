@@ -8,8 +8,8 @@ export default function WorkCard({ item, selected, onSelect }) {
       className={cn(
         "group flex h-14 min-w-[100px] shrink-0 snap-start items-center gap-3 overflow-hidden rounded-full border px-4 py-2 text-left transition-all duration-300 md:min-w-0 md:flex-1 md:basis-0",
         selected
-          ? "border-gold/45 bg-white text-ink shadow-lux-sm"
-          : "border-gold/12 bg-white/45 text-charcoal hover:border-gold/28 hover:bg-white/75",
+          ? "border-gold/50 bg-white text-ink shadow-lux-md"
+          : "border-gold/20 bg-white/55 text-charcoal hover:border-gold/35 hover:bg-white/85",
       )}
       aria-pressed={selected}
     >

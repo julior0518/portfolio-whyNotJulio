@@ -16,19 +16,21 @@ export default function Tools() {
   return (
     <section
       id="tools"
-      className="relative overflow-visible bg-canvas text-ink app-padding section-spacing scroll-mt-28"
+      className="alpine-map-grid relative overflow-visible border-t-2 border-gold/20 text-ink section-spacing scroll-mt-28"
     >
-      <ToolsInfo />
-      <ToolsSearch
-        query={query}
-        setQuery={setQuery}
-        recommendations={recommendations}
-      />
-      <ToolsSkillsGrid
-        slugs={TOOL_SLUGS}
-        matchedSet={matchedSet}
-        noSearchMatches={noSearchMatches}
-      />
+      <div className="mx-auto w-full max-w-screen-2xl app-padding">
+        <ToolsInfo />
+        <ToolsSearch
+          query={query}
+          setQuery={setQuery}
+          recommendations={recommendations}
+        />
+        <ToolsSkillsGrid
+          slugs={TOOL_SLUGS}
+          matchedSet={matchedSet}
+          noSearchMatches={noSearchMatches}
+        />
+      </div>
     </section>
   );
 }

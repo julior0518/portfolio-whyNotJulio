@@ -9,9 +9,7 @@ export default function Home() {
   return (
     <section
       id="home"
-      className={cn(
-        "relative isolate min-h-[100svh] overflow-hidden app-padding px-3 sm:px-4 lg:px-6",
-      )}
+      className={cn("relative isolate min-h-[100svh] overflow-hidden")}
     >
       <div className="pointer-events-none absolute inset-0 z-[0]">
         <div
@@ -21,7 +19,7 @@ export default function Home() {
       </div>
 
       <div className="relative z-20 flex min-h-[100svh] w-full flex-col">
-        <div className="mx-auto flex w-full max-w-screen-2xl flex-1 flex-col justify-center pb-6 pt-14 md:pb-10 md:pt-16">
+        <div className="mx-auto flex w-full max-w-screen-2xl flex-1 flex-col justify-center pb-6 pt-14 app-padding md:pb-10 md:pt-16">
           <HomeArchStage>
             <div className="relative isolate h-full min-h-[12rem] w-full">
               <AlpineParallaxStage contained />

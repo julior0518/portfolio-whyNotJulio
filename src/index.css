@@ -1,32 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:ital,opsz,wght@0,14..32,300..600;1,14..32,300..600&display=swap");
 @import "tailwindcss";
 
+/* Single source of truth for palette — JS reads via `cssVarColor()` in `src/theme/index.js`. */
 @theme {
-  /* Alpine Riviera Jungle Couture — base & structure */
-  --color-canvas: #f8f6f2;
-  --color-porcelain: #f3eee7;
+  --color-canvas: #f7f5f0;
+  --color-porcelain: #f1ede6;
+  --color-mist: #e9ece6;
+  --color-pebble: #e2e4df;
   --color-white: #ffffff;
-  --color-ink: #111111;
+  --color-ink: #101010;
   --color-charcoal: #2a2a2a;
-  --color-muted: #6b6560;
+  --color-muted: #5a534c;
 
-  /* Luxury accents */
-  --color-gold: #c6a962;
-  --color-brass: #a8843d;
+  --color-gold: #bfa256;
+  --color-brass: #9a7634;
   --color-burgundy: #4a1f1f;
   --color-equestrian: #7a5c3e;
 
-  /* Nature */
-  --color-alpine: #6b7d6d;
-  --color-plum: #5a3958;
+  --color-alpine: #5f6f62;
+  --color-plum: #52324f;
+  --color-signal: #b3523d;
 
   --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --font-sans: "Inter", system-ui, sans-serif;
 
-  /* Depth — soft, expensive (usable as shadow-lux-* utilities) */
-  --shadow-lux-sm: 0 10px 30px rgba(0, 0, 0, 0.08);
-  --shadow-lux-md: 0 18px 50px rgba(0, 0, 0, 0.1);
-  --shadow-lux-lg: 0 30px 80px rgba(0, 0, 0, 0.12);
+  --shadow-lux-sm: 0 10px 28px rgba(0, 0, 0, 0.07);
+  --shadow-lux-md: 0 16px 44px rgba(0, 0, 0, 0.09);
+  --shadow-lux-lg: 0 28px 72px rgba(0, 0, 0, 0.11);
 
   --animate-marquee: marquee 50s linear infinite;
   @keyframes marquee {
@@ -80,14 +80,30 @@ body::before {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.22;
+  opacity: 0.2;
   mix-blend-mode: multiply;
   background-image:
-    radial-gradient(rgba(17, 17, 17, 0.05) 1px, transparent 1px),
-    radial-gradient(rgba(74, 31, 31, 0.04) 1px, transparent 1px);
+    radial-gradient(rgba(17, 17, 17, 0.045) 1px, transparent 1px),
+    radial-gradient(rgba(74, 31, 31, 0.035) 1px, transparent 1px),
+    linear-gradient(
+      105deg,
+      rgba(95, 111, 98, 0.04) 0%,
+      transparent 42%,
+      transparent 58%,
+      rgba(191, 162, 86, 0.05) 100%
+    );
   background-size:
-    5px 5px,
-    9px 9px;
+    6px 6px,
+    11px 11px,
+    100% 100%;
+}
+
+.alpine-map-grid {
+  background-color: var(--color-canvas);
+  background-image:
+    linear-gradient(rgba(95, 111, 98, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(95, 111, 98, 0.055) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
 .app-padding {
@@ -99,7 +115,7 @@ body::before {
 }
 
 .grid-black-color {
-  @apply rounded-2xl border border-gold/15 bg-porcelain/90 shadow-lux-sm;
+  @apply rounded-2xl border border-gold/20 bg-porcelain/95 shadow-lux-sm;
 }
 
 .hover-animation {
@@ -114,7 +130,7 @@ body::before {
 
 /* Editorial surfaces */
 .grid-default {
-  @apply rounded-2xl border border-gold/10 bg-white/95 shadow-lux-sm backdrop-blur-sm transition-all duration-500;
+  @apply rounded-2xl border border-gold/15 bg-white/96 shadow-lux-sm backdrop-blur-sm transition-all duration-500;
 }
 
 .grid-1 {

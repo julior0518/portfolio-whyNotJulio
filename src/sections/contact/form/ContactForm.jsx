@@ -46,7 +46,7 @@ export default function ContactForm({
       <button
         type="submit"
         disabled={isLoading}
-        className="hover-animation w-full rounded-full border border-gold/30 bg-gradient-to-r from-burgundy/90 via-plum/80 to-burgundy/90 py-3.5 font-sans text-sm font-medium uppercase tracking-[0.2em] text-porcelain shadow-lux-sm transition disabled:opacity-50"
+        className="hover-animation w-full rounded-lg border border-gold/30 bg-gradient-to-r from-burgundy/90 via-plum/80 to-burgundy/90 py-3.5 font-sans text-sm font-semibold uppercase tracking-[0.2em] text-porcelain shadow-lux-sm transition disabled:opacity-50"
       >
         {!isLoading ? "Send" : "Sending…"}
       </button>

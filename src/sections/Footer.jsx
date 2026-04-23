@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="app-padding border-t border-gold/15 bg-canvas pb-10 pt-8">
+    <footer className="app-padding border-t-2 border-gold/25 bg-canvas pb-10 pt-8">
       <div className="mx-auto flex max-w-screen-2xl flex-row items-center justify-between gap-4 text-sm text-muted">
         <a
           href="/"

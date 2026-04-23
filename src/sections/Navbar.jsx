@@ -48,7 +48,7 @@ const Navbar = () => {
   const reducedMotion = usePrefersReducedMotion();
 
   return (
-    <header className="fixed left-0 top-0 z-[200] w-full border-b border-gold/15 bg-canvas/90 backdrop-blur-md">
+    <header className="fixed left-0 top-0 z-[200] w-full border-b-2 border-gold/25 bg-canvas/92 backdrop-blur-md">
       <div className="mx-auto flex max-w-screen-2xl items-center justify-between gap-4 px-5 py-3.5 sm:px-10 lg:px-14">
         <a
           href="#home"
@@ -74,7 +74,7 @@ const Navbar = () => {
           aria-expanded={isOpen}
           aria-label={isOpen ? "Close menu" : "Open menu"}
           onClick={() => setIsOpen((prev) => !prev)}
-          className="text-charcoal transition-colors hover:text-brass sm:hidden"
+          className="rounded-md border border-gold/25 bg-white/80 p-2 text-charcoal shadow-sm transition-colors hover:border-brass/40 hover:text-brass sm:hidden"
         >
           {isOpen ? <CloseIcon /> : <MenuIcon />}
         </button>

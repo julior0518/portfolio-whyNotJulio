@@ -2,6 +2,19 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 
+const SURFACES = {
+  canvas: {
+    root: "",
+    fadeFrom: "from-canvas",
+    dotBg: "bg-canvas/90",
+  },
+  mist: {
+    root: "bg-mist/40",
+    fadeFrom: "from-mist/40",
+    dotBg: "bg-mist/90",
+  },
+};
+
 const VARIANTS = {
   comet: {
     dotTrack: ["0%", "100%"],
@@ -31,9 +44,10 @@ const VARIANTS = {
   },
 };
 
-export default function SectionOrbitDivider({ variant = "comet" }) {
+export default function SectionOrbitDivider({ variant = "comet", surface = "canvas" }) {
   const reduced = usePrefersReducedMotion();
   const selected = VARIANTS[variant] || VARIANTS.comet;
+  const surfaceTokens = SURFACES[surface] || SURFACES.canvas;
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -54,7 +68,7 @@ export default function SectionOrbitDivider({ variant = "comet" }) {
     <div
       ref={containerRef}
       aria-hidden
-      className="pointer-events-none relative mx-auto my-2 h-20 w-full max-w-screen-2xl overflow-hidden"
+      className={`pointer-events-none relative py-2 h-20 w-full overflow-hidden ${surfaceTokens.root}`}
     >
       <svg
         className="absolute inset-0 h-full w-full"
@@ -77,8 +91,12 @@ export default function SectionOrbitDivider({ variant = "comet" }) {
           strokeLinecap="round"
         />
       </svg>
-      <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-canvas to-transparent" />
-      <div className="absolute inset-y-0 right-0 w-40 bg-gradient-to-l from-canvas to-transparent" />
+      <div
+        className={`absolute inset-y-0 left-0 w-40 bg-gradient-to-r ${surfaceTokens.fadeFrom} to-transparent`}
+      />
+      <div
+        className={`absolute inset-y-0 right-0 w-40 bg-gradient-to-l ${surfaceTokens.fadeFrom} to-transparent`}
+      />
       {reduced ? (
         <div className="absolute left-1/2 top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full border border-brass/50 bg-brass/80 shadow-[0_0_10px_rgba(168,132,61,0.35)]" />
       ) : (
@@ -89,7 +107,7 @@ export default function SectionOrbitDivider({ variant = "comet" }) {
           />
           <motion.div
             style={{ left: dotLeft, y: dotY, rotate: dotRotate, scale: dotScale, opacity: dotOpacity }}
-            className="absolute top-1/2 flex h-5 w-5 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-brass/55 bg-canvas/90 shadow-[0_0_18px_rgba(168,132,61,0.24)]"
+            className={`absolute top-1/2 flex h-5 w-5 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-brass/55 ${surfaceTokens.dotBg} shadow-[0_0_18px_rgba(168,132,61,0.24)]`}
           >
             <span className="h-2 w-2 rounded-full bg-brass/90 shadow-[0_0_10px_rgba(168,132,61,0.5)]" />
           </motion.div>

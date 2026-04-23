@@ -5,7 +5,7 @@ export default function AboutInfo() {
     <SectionInfo
       eyebrow="Mindset"
       title="Clean and functional development."
-      description=" Blending design, tech, and business decisions to bring forward ideas into reality."
+      description="Blending design, tech, and business decisions to bring forward ideas into reality."
     />
   );
 }
