@@ -33,7 +33,7 @@ export default function ToolsSearch({ query, setQuery, recommendations }) {
         onChange={(e) => setQuery(e.target.value)}
         onFocus={() => setFocused(true)}
         onBlur={() => setTimeout(() => setFocused(false), 150)}
-        className="w-full rounded-full border border-gold/20 bg-white/90 py-3.5 pl-12 pr-5 font-sans text-sm text-ink shadow-lux-sm backdrop-blur-sm transition duration-500 placeholder:text-muted focus:border-gold/40 focus:outline-none focus:ring-2 focus:ring-gold/15"
+        className="w-full rounded-full border border-gold/20 bg-white/90 py-3.5 pl-12 pr-5 font-sans text-base text-ink shadow-lux-sm backdrop-blur-sm transition duration-500 placeholder:text-muted focus:border-gold/40 focus:outline-none focus:ring-2 focus:ring-gold/15"
       />
       <AnimatePresence>
         {focused && recommendations.length > 0 ? (

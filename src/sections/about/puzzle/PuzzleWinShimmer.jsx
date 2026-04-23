@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useIsMobileViewport } from "../../../hooks/useIsMobileViewport";
 import { usePrefersReducedMotion } from "../../../hooks/usePrefersReducedMotion";
 import { coutureEase } from "../../../lib/coutureMotion";
 
@@ -9,6 +10,7 @@ const MAX_STARS = 64;
 
 export default function PuzzleWinShimmer({ active }) {
   const reduced = usePrefersReducedMotion();
+  const isMobile = useIsMobileViewport();
   const [stars, setStars] = useState([]);
   const idRef = useRef(0);
 
@@ -17,7 +19,7 @@ export default function PuzzleWinShimmer({ active }) {
   }, []);
 
   useEffect(() => {
-    if (!active || reduced) {
+    if (!active || reduced || isMobile) {
       setStars([]);
       return;
     }
@@ -45,9 +47,9 @@ export default function PuzzleWinShimmer({ active }) {
     tick();
     const interval = setInterval(tick, SPAWN_MS);
     return () => clearInterval(interval);
-  }, [active, reduced]);
+  }, [active, reduced, isMobile]);
 
-  if (!active || reduced) return null;
+  if (!active || reduced || isMobile) return null;
 
   return (
     <div

@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
+import { MOBILE_VIEWPORT_MQ } from "./useIsMobileViewport";
 import { usePrefersReducedMotion } from "./usePrefersReducedMotion";
-
-const DEFAULT_MOBILE_MQ = "(max-width: 767px)";
 const REDUCED_MOTION_MQ = "(prefers-reduced-motion: reduce)";
 
 /**
@@ -19,7 +18,7 @@ const REDUCED_MOTION_MQ = "(prefers-reduced-motion: reduce)";
  */
 export function useHorizontalScrollHint(rootRef, scrollerRef, options = {}) {
   const {
-    mobileMediaQuery = DEFAULT_MOBILE_MQ,
+    mobileMediaQuery = MOBILE_VIEWPORT_MQ,
     afterVisibleMs = 1000,
     holdAtPeekMs = 500,
     intersectionThreshold = 0.12,
