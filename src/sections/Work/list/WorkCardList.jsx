@@ -6,11 +6,7 @@ export default function WorkCardList({ items, selectedWork, onSelectWork }) {
   const rootRef = useRef(null);
   const scrollerRef = useRef(null);
 
-  const horizontalScrollHintOptions = {
-    afterVisibleMs: 1200,
-    holdAtPeekMs: 500,
-  };
-  useHorizontalScrollHint(rootRef, scrollerRef, horizontalScrollHintOptions);
+  useHorizontalScrollHint(rootRef, scrollerRef);
 
   return (
     <div
