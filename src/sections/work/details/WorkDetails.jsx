@@ -62,7 +62,7 @@ export default function WorkDetails({ selectedWork }) {
         </p>
         {Boolean(selectedWork.tools?.length) && (
           <div
-            className="mt-5 flex flex-wrap gap-3"
+            className="mt-5 flex flex-wrap gap-3 pointer-events-none"
             onClick={(e) => e.stopPropagation()}
           >
             {selectedWork.tools.map((tool) => (
