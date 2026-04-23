@@ -8,7 +8,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden border-t-2 border-gold/20 bg-mist/40 text-ink section-spacing scroll-mt-28"
+      className="relative overflow-hidden border-t-2 border-gold/20 bg-mist/40 text-ink section-spacing scroll-pt-28"
     >
       <div className="mx-auto w-full max-w-screen-2xl app-padding">
         <AboutInfo />

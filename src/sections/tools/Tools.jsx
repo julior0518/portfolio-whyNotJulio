@@ -16,7 +16,7 @@ export default function Tools() {
   return (
     <section
       id="tools"
-      className="alpine-map-grid relative overflow-visible border-t-2 border-gold/20 text-ink section-spacing scroll-mt-28"
+      className="alpine-map-grid relative overflow-visible border-t-2 border-gold/20 text-ink section-spacing scroll-pt-28"
     >
       <div className="mx-auto w-full max-w-screen-2xl app-padding">
         <ToolsInfo />

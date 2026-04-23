@@ -15,7 +15,7 @@ export default function Work() {
     <section
       id="work"
       className={cn(
-        "relative overflow-visible border-t-2 border-gold/20 bg-porcelain/35 text-ink section-spacing scroll-mt-28 md:-mb-60",
+        "relative overflow-visible border-t-2 border-gold/20 bg-porcelain/35 text-ink section-spacing scroll-pt-28 md:-mb-60",
         selectedWork ? "-mb-70" : "-mb-110",
       )}
     >

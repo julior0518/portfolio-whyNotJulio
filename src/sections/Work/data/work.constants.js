@@ -6,7 +6,7 @@ export const WORK_ITEMS = [
   {
     id: "crm",
     eyebrow: "CRM",
-    title: "CRM",
+    title: "Lead Analytics",
     screenImage: "/assets/projects/crm.png",
     description:
       "A customer relationship management and lead analyticis dashboard for car dealerships.",
@@ -26,17 +26,17 @@ export const WORK_ITEMS = [
   {
     id: "cpg",
     eyebrow: "CPG",
-    title: "CPG",
+    title: "Goods",
     screenImage: "/assets/projects/cpg.png",
     description:
-      "A consumer packaged goods management module",
+      "A consumer packaged goods demand planning module",
     tools: ["next", "type-script", "node", "aws"],
     href: "",
   },
   {
     id: "dicom",
     eyebrow: "Health",
-    title: "DicomSender",
+    title: "Dicom Sender",
     screenImage: "/assets/projects/dicomsender.png",
     description:
       "A file sharing system for medical imaging files.",
@@ -56,7 +56,7 @@ export const WORK_ITEMS = [
   {
     id: "gaming",
     eyebrow: "Gaming",
-    title: "Gamestar.app",
+    title: "Gamestar",
     screenImage: "/assets/projects/gamestar.png",
     description:
       "Foudned a gaming platform called GAMESTAR to connect and compete with celebrities where we had 7,000 users in the first month.",

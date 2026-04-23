@@ -3,7 +3,7 @@ import { coutureEase } from "../lib/coutureMotion";
 import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 
 const LOGO_SRC = "/assets/wnj_logo.png";
-const WORDMARK = "why not Julio";
+const WORDMARK = "whyNotJulio";
 
 const ease = coutureEase;
 
