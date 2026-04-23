@@ -5,7 +5,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { couture } from "../lib/coutureMotion";
 import { useActiveChapter } from "../hooks/useActiveChapter";
 import { cn } from "../lib/cn";
-import NavbarBrand from "../components/NavbarBrand";
+import NavbarBrand, { NAV_BRAND_REVEAL_TAIL_S } from "../components/NavbarBrand";
 import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 
 const NAV_LINKS = [
@@ -52,18 +52,22 @@ const Navbar = () => {
       <div className="mx-auto flex max-w-screen-2xl items-center justify-between gap-4 px-5 py-3.5 sm:px-10 lg:px-14">
         <a
           href="#home"
-          className="group flex min-w-0 shrink-0 items-center gap-3"
+          className="group flex min-w-0 shrink-0 items-center gap-3 sm:gap-4"
         >
           <NavbarBrand />
           <motion.span
-            className="hidden font-sans text-[0.6rem] font-medium uppercase tracking-[0.3em] text-muted sm:inline md:max-w-[10rem] md:truncate lg:max-w-none"
+            className="hidden translate-y-[2px] font-sans text-[0.6rem] font-medium uppercase tracking-[0.3em] text-muted sm:inline md:max-w-[10rem] md:truncate lg:max-w-none"
             aria-live="polite"
             initial={reducedMotion ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={
               reducedMotion
                 ? undefined
-                : { delay: 1.05, duration: 0.55, ease: couture.reveal.ease }
+                : {
+                    delay: NAV_BRAND_REVEAL_TAIL_S,
+                    duration: 0.48,
+                    ease: couture.reveal.ease,
+                  }
             }
           >
             Portfolio
