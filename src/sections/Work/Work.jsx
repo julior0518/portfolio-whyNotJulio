@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import { cn } from "../../lib/cn";
 import { WORK_ITEMS } from "./data/work.constants";
 import WorkDetails from "./details/WorkDetails";
 import WorkInfo from "./info/WorkInfo";
@@ -13,7 +14,10 @@ export default function Work() {
   return (
     <section
       id="work"
-      className="relative overflow-visible bg-canvas text-ink app-padding section-spacing scroll-mt-28 -mb-70 md:-mb-60"
+      className={cn(
+        "relative overflow-visible bg-canvas text-ink app-padding section-spacing scroll-mt-28 md:-mb-60",
+        selectedWork ? "-mb-70 " : "-mb-110",
+      )}
     >
       <WorkInfo />
 
