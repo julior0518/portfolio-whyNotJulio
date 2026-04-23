@@ -4,16 +4,17 @@ import { useGLTF, useAnimations } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Suspense } from "react";
 import * as THREE from "three";
+import { useHorseKeys } from "./HorseKeysContext.jsx";
 
 const WALK_IN_SEC = 1.2;
 const MAX_DELTA = 1 / 30;
 
-const Horse = ({ position = [-1.5, -1.2, 0], ...props }) => {
+const Horse = ({ keysRef, position = [-1.5, -1.2, 0], ...props }) => {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/models/horse.glb");
   const { actions } = useAnimations(animations, group);
 
-  const keys = useRef({ w: false, a: false, d: false });
+  const keys = keysRef;
   const introComplete = useRef(false);
   const introTime = useRef(0);
   /** Avoid one frame at origin before RAF — R3F default position is 0,0,0 */
@@ -185,32 +186,37 @@ const ResponsiveCamera = () => {
 };
 
 export default function HomeHorseScene() {
+  const keysRef = useHorseKeys();
   const position = [-0.08, -0.55, 3.11];
+
   return (
-    <figure className="absolute inset-0 h-full w-full overflow-hidden">
-      <Canvas camera={{ position: position, fov: 45 }}>
-        <Suspense fallback={<></>}>
-          <ambientLight intensity={0.4} />
-          <directionalLight
-            position={[5, 10, 5]}
-            intensity={1.5}
-            castShadow
-            shadow-mapSize-width={1024}
-            shadow-mapSize-height={1024}
-          />
-          <hemisphereLight
-            skyColor={"#b1e1ff"}
-            groundColor={"#333"}
-            intensity={0.5}
-          />
-          <ResponsiveCamera />
-          <Horse
-            position={[-1.5, -1.2, 0]}
-            scale={0.5}
-            rotation={[0.2, Math.PI / 3, 0]}
-          />
-        </Suspense>
-      </Canvas>
+    <figure className="absolute inset-0 h-full w-full overflow-visible">
+      <div className="absolute inset-0 overflow-hidden">
+        <Canvas className="h-full w-full" camera={{ position: position, fov: 45 }}>
+          <Suspense fallback={<></>}>
+            <ambientLight intensity={0.4} />
+            <directionalLight
+              position={[5, 10, 5]}
+              intensity={1.5}
+              castShadow
+              shadow-mapSize-width={1024}
+              shadow-mapSize-height={1024}
+            />
+            <hemisphereLight
+              skyColor={"#b1e1ff"}
+              groundColor={"#333"}
+              intensity={0.5}
+            />
+            <ResponsiveCamera />
+            <Horse
+              keysRef={keysRef}
+              position={[-1.5, -1.2, 0]}
+              scale={0.5}
+              rotation={[0.2, Math.PI / 3, 0]}
+            />
+          </Suspense>
+        </Canvas>
+      </div>
     </figure>
   );
 }
